@@ -1,0 +1,60 @@
+<nz-content
+  class="content"
+  style="background:#f0f2f5; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div class="form-container">
+    <form (ngSubmit)="submitForm()">
+      <div class="form-title">login</div>
+      <h4 style="color: gray">sign in your account</h4>
+      <hr />
+      <nz-form-item>
+        <nz-form-control style="margin-top:10px">
+          <label class="label">Email</label>
+          <input
+            nz-input
+            [(ngModel)]="email"
+            name="email"
+            required
+            #emailLocal="ngModel"
+          />
+          <div
+            *ngIf="
+              emailLocal.invalid && (emailLocal.dirty || emailLocal.touched)
+            "
+          >
+            <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
+          </div>
+        </nz-form-control>
+        <nz-form-control style="margin-top:10px" nzValidateStatus="success">
+          <label class="label">Password</label>
+          <input
+            type="password"
+            nz-input
+            [(ngModel)]="password"
+            name="password"
+            required
+            #passwordLocal="ngModel"
+          />
+          <div
+            *ngIf="
+              passwordLocal.invalid &&
+              (passwordLocal.dirty || passwordLocal.touched)
+            "
+          >
+            <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+      <button
+        nzSize="large"
+        style="margin-top:20px; background-color: green; color: white"
+        nz-button
+        nzBlock
+        [disabled]="emailLocal.invalid || passwordLocal.invalid"
+        [nzLoading]="loading"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</nz-content>

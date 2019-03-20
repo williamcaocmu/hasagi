@@ -1,0 +1,106 @@
+<nz-content
+  class="content"
+  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div style="width: 90%">
+    <h1 style="text-transform: uppercase">
+      {{ editMode ? "Edit" : "Create" }} Document
+    </h1>
+    <div style="margin-top:20px">
+      <form #projectForm="ngForm">
+        <nz-form-item>
+          <nz-form-control
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label">Project Name</label>
+           
+            <input  [(ngModel)]="document.name"  nz-input name="name" required />
+          </nz-form-control>
+          <nz-form-control
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label"> Description</label>
+            <input [(ngModel)]="document.description" nz-input name="description" required />
+          </nz-form-control>
+          <nz-form-control>
+            <label class="label"> Document Type</label>
+            <nz-select [(ngModel)]="document.type" name="projectType" style="width: 100%;" nzLoading>
+              <nz-option
+                nzValue="process template"
+                nzLabel="Process Template"
+              ></nz-option>
+              <nz-option nzValue="checklist" nzLabel="Checklist"></nz-option>
+              <nz-option nzValue="standard" nzLabel="Standard"></nz-option>
+              <nz-option nzValue="best practice" nzLabel="Best Practice"></nz-option>
+            </nz-select>
+          </nz-form-control>
+          <nz-form-control>
+            <label class="label"> Reviewer</label>
+            <nz-select [(ngModel)]="document.reviewer" name="qam" style="width: 100%;">
+              <nz-option
+                *ngFor="let item of reviewers"
+                nzValue="{{ item.id }}"
+                nzLabel="{{ item.name }}"
+              >
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+          <nz-form-control>
+            <label class="label"> File</label>
+            <div>
+                <nz-upload
+                [nzLimit]="0"
+                [(nzFileList)]="fileList"
+                [nzBeforeUpload]="beforeUpload"
+              >
+                <button nz-button>
+                  <i nz-icon type="upload"></i><span>Select File</span>
+                </button>
+              </nz-upload>
+              <button
+                nz-button
+                [nzType]="'primary'"
+                [nzLoading]="uploading"
+                (click)="handleUpload()"
+                [disabled]="fileList.length == 0"
+                style="margin-top: 16px"
+              >
+                {{ uploading ? "Uploading" : "Start Upload" }}
+              </button>
+            </div>
+          </nz-form-control>
+          <div
+            style="margin-top: 25px; display: flex; justify-content: space-between"
+          >
+            <div class="left">
+              <button (click)="goBack()" nz-button nzType="default">
+                <i nz-icon type="left"></i> Back
+              </button>
+            </div>
+            <div class="right">
+              <button
+                (click)="createDocument()"
+                style="margin-right:10px"
+                nz-button
+                nzType="primary"
+              >
+                {{ editMode ? "Edit" : "Create" }}
+              </button>
+              <button
+                (click)="resetForm(projectForm)"
+                nz-button
+                nzType="default"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</nz-content>

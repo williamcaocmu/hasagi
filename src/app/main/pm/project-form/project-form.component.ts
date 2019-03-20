@@ -1,0 +1,159 @@
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
+import { NgForm } from "@angular/forms";
+import { PmService } from "../pm.service";
+import * as format from "date-fns";
+import { AuthService } from 'src/app/login/auth.service';
+
+@Component({
+  selector: "app-project-form",
+  templateUrl: "./project-form.component.html",
+  styleUrls: ["./project-form.component.css"]
+})
+export class ProjectFormComponent implements OnInit {
+  editMode = false;
+  selectedQAM = "";
+  selectedQAO = [];
+  selectedPM = "";
+
+  listOfOption = [];
+  rangeDate = [];
+  qamList = [];
+  qaoList = [];
+  pmList = [];
+  project = {
+    name: "",
+    description: "",
+    type: "",
+    qam: {},
+    qao: [],
+    start: null,
+    end: null,
+    pm: ""
+  };
+
+  me ;
+
+  constructor(
+    private router: Router,
+    private location: Location,
+    private pmService: PmService,
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
+  ) {}
+
+  async ngOnInit() {
+    await this.getAuth()
+    await this.getQA();
+    this.activatedRoute.params.subscribe(param => {
+      if (param["id"]) {
+        this.editMode = true;
+        this.getDetail(param["id"]);
+      }
+    });
+  }
+
+  getAuth() {
+    this.authService.getMe().subscribe(
+      res => {
+        this.me = res;
+      },
+      err => console.log("err", err)
+    );
+  }
+
+  getDetail(id) {
+    this.pmService.getDetailProject(id).subscribe(
+      res => {
+        if (res["code"] === 1) {
+          if(this.me.role === 'admin'){
+            this.selectedPM = res["data"].pm[0].id;
+          }
+          if(this.me.role === 'pm'){
+            this.selectedQAM = res["data"].qam[0].id;
+            let data = res["data"].qao.map(item => {
+              return item.id;
+            });
+            this.selectedQAO = data;
+          }
+          this.project = res["data"].project;
+          this.rangeDate = [res["data"].project.start, res["data"].project.end];
+        }
+      },
+      err => console.log("err", err)
+    );
+  }
+
+  createProject() {
+    this.project.qam = this.selectedQAM;
+    this.project.qao = this.selectedQAO;
+    this.project.pm = this.selectedPM;
+    this.pmService.createProjectApi(this.project).subscribe(
+      res => {
+        if (res["code"] === 1) {
+          this.router.navigate(["/main/pm/manage-projects"]);
+        }
+      },
+      err => console.log("err", err)
+    );
+  }
+
+  updateProject() {
+    if(this.me.role === 'admin'){
+      this.project.pm = this.selectedPM;
+      this.pmService.updateProjectApi(this.project).subscribe(
+        res => {
+          if (res["code"] === 1) {
+            this.router.navigate(['/main/pm/manage-projects'])
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    };
+    if(this.me.role === 'pm'){
+      this.project.qam = this.selectedQAM;
+      this.project.qao = this.selectedQAO;
+      this.pmService.updateProjectPMApi(this.project).subscribe(
+        res => {
+          if (res["code"] === 1) {
+            this.router.navigate(['/main/pm/manage-projects'])
+          }
+        },
+        err => {
+          console.log(err);
+        }
+      );
+      console.log(this.project)
+    }
+   
+  }
+
+  getQA() {
+    this.pmService.getAccInfo().subscribe(
+      res => {
+        if (res["code"] === 1) {
+          this.pmList = res["data"]["pm"];
+          this.qaoList = res["data"]["qao"];
+          this.qamList = res["data"]["qam"];
+        }
+      },
+      err => console.log("err", err)
+    );
+  }
+
+  goBack() {
+    this.location.back();
+  }
+
+  onChange(result: Date[]): void {
+    this.project.start = format.format(result[0], "MM/DD/YYYY");
+    this.project.end = format.format(result[1], "MM/DD/YYYY");
+  }
+
+  resetForm(projectForm: NgForm) {
+    projectForm.reset();
+  }
+}

@@ -1,0 +1,63 @@
+<nz-content
+  class="content"
+  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div style="width: 90%">
+    <div *ngIf="me?.role === 'admin'" (click)="addProject()">
+      <button nz-button nzType="primary">Add Projects</button>
+    </div>
+
+    <div style="margin-top:20px">
+      <nz-table
+        #nzTable
+        [nzNoResult]="'No Result'"
+        [nzData]="documents"
+        [nzPageSize]="10"
+        [nzLoading]="loadingTable"
+        #filterTable 
+      >
+        <thead >
+          <tr>
+            <th nzCustomFilter>
+              Project Name
+            </th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Role</th>
+           
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-data [ngForOf]="nzTable.data">
+            <tr>
+              <td>{{ data.name }}</td>
+              <td>{{ data.type }}</td>
+              <td>{{ data.status  }}</td>
+              <td>{{ data.role }}</td>
+              <td>
+                <button
+                  [hidden]="data.role !== 'admin' && data.role !== 'pm'"
+                  (click)="navigateEdit(data.id)"
+                  nz-button
+                  nzType="primary"
+                  nzGhost
+                >
+                  Edit
+                </button>
+                <button
+                  (click)="navigateView(data.id)"
+                  nz-button
+                  nzType="primary"
+                  nzGhost
+                >
+                  View
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</nz-content>

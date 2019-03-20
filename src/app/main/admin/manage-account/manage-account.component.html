@@ -1,0 +1,38 @@
+<nz-content
+  class="content"
+  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div style="width: 90%">
+    <nz-table #nzTable [nzNoResult]="'No Result'" [nzData]="accounts" [nzPageSize]="10" [nzLoading]="loadingTable" >
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Date registed</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template ngFor let-data [ngForOf]="nzTable.data">
+          <tr>
+            <td>{{ data.name }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.role }}</td>
+            <td>{{ data.status? 'Active' : 'Deactive' }}</td>
+            <td>
+              <button
+                (click)="navigateEdit(data.id)"
+                nz-button
+                nzType="primary"
+                nzGhost
+              >
+                Edit
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </nz-table>
+  </div>
+</nz-content>

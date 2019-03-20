@@ -1,0 +1,27 @@
+.form-container {
+  width: 700px;
+  padding: 15px 20px;
+  overflow: hidden;
+  /* background: linear-gradient(75deg, #c02425, #f0cb35); */
+  background: #fff;
+  
+}
+.content {
+  background: #fff;
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.form-title{
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.label {
+    text-transform: uppercase;
+    font-weight: bold;
+}

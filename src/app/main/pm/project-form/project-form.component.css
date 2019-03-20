@@ -1,0 +1,11 @@
+nz-date-picker,
+nz-month-picker,
+nz-range-picker,
+nz-week-picker {
+  margin: 0 8px 12px 0;
+  width: 100%;
+}
+
+span.ant-calendar-picker  {
+    width: 100%;
+}

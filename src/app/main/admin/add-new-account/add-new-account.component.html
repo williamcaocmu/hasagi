@@ -1,0 +1,141 @@
+<nz-content
+  class="content"
+  style="background:#f0f2f5; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div class="form-container">
+    <form>
+      <div class="form-title">{{editMode? 'edit account' :"create"}}</div>
+      <h4 style="color: gray">{{editMode? 'edit': 'create'}} your account</h4>
+      <hr />
+      <nz-form-item>
+        <nz-form-control
+          style="margin-top:10px"
+          nzValidateStatus="success"
+          nzHasFeedback="false"
+        >
+          <label class="label">Name</label>
+          <input
+            nz-input
+            [(ngModel)]="account.name"
+            name="username"
+            #nameLocal="ngModel"
+            required
+          />
+          <div
+            *ngIf="nameLocal.invalid && (nameLocal.dirty || nameLocal.touched)"
+          >
+            <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
+          </div>
+        </nz-form-control>
+        <nz-form-control
+          style="margin-top:10px"
+          nzValidateStatus="success"
+          nzHasFeedback="false"
+        >
+          <label class="label">Email</label>
+          <input
+            nz-input
+            [(ngModel)]="account.email"
+            name="email"
+            required
+            #emailLocal="ngModel"
+          />
+          <div
+            *ngIf="
+              nameLocal.invalid && (emailLocal.dirty || emailLocal.touched)
+            "
+          >
+            <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
+          </div>
+        </nz-form-control>
+        <nz-form-control
+          style="margin-top:10px"
+          nzValidateStatus="success"
+          nzHasFeedback="false"
+        >
+          <label class="label">Staff Id</label>
+          <input
+            nz-input
+            [(ngModel)]="account.staffid"
+            name="staffid"
+            required
+            #staffid="ngModel"
+          />
+          <div *ngIf="staffid.invalid && (staffid.dirty || staffid.touched)">
+            <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
+          </div>
+        </nz-form-control>
+        <nz-form-control
+          style="margin-top:10px"
+          nzValidateStatus="success"
+          nzHasFeedback="false"
+        >
+          <label class="label">Password</label>
+          <input
+            type="password"
+            nz-input
+            [(ngModel)]="account.password"
+            name="password"
+            required
+            #passwordLocal="ngModel"
+          />
+          <div
+            *ngIf="
+              passwordLocal.invalid &&
+              (passwordLocal.dirty || passwordLocal.touched)
+            "
+          >
+            <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
+          </div>
+        </nz-form-control>
+        <nz-form-control>
+          <label class="label">Role</label>
+          <nz-select
+            style="width: 100%;"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Chọn một vai trò"
+            [(ngModel)]="account.role"
+            name="role"
+            #roleLocal="ngModel"
+          >
+            <nz-option nzLabel="Admin" nzValue="admin"></nz-option>
+            <nz-option nzLabel="QAM" nzValue="qam"></nz-option>
+            <nz-option nzLabel="QAO" nzValue="qao"></nz-option>
+            <nz-option nzLabel="PM" nzValue="pm"></nz-option>
+          </nz-select>
+          <div *ngIf="!account.role && roleLocal.touched">
+            <nz-form-explain style="color: red">Bắt buộc chọn</nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-control
+        *ngIf="editMode"
+        style="margin-top:10px"
+        nzValidateStatus="success"
+        nzHasFeedback="false"
+      >
+        <label class="label">Status</label>
+        <br>
+        <nz-switch name="status" [(ngModel)]="account.status"></nz-switch>
+      </nz-form-control>
+
+      <button
+        nzSize="large"
+        style="margin-top:20px; background-color: green; color: white"
+        nz-button
+        nzBlock
+        (click)=" editMode ? editAccount() :  createAccount()"
+        [disabled]="
+          nameLocal.invalid ||
+          emailLocal.invalid ||
+          staffid.invalid ||
+          roleLocal.invalid ||
+          passwordLocal.invalid
+        "
+      >
+        {{ editMode ? "Edit Account" : "Create Account"}}
+      </button>
+    </form>
+  </div>
+</nz-content>

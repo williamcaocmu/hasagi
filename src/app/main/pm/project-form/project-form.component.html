@@ -1,0 +1,150 @@
+<nz-content
+  class="content"
+  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div style="width: 90%">
+    <h1 style="text-transform: uppercase">
+      {{ editMode ? "Edit" : "Create" }} Project
+    </h1>
+    <div style="margin-top:20px">
+      <form #projectForm="ngForm">
+        <nz-form-item>
+          <nz-form-control
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label">Project Name</label>
+            <input [(ngModel)]="project.name" nz-input name="name" required />
+          </nz-form-control>
+          <nz-form-control
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label"> Description</label>
+            <input
+              [(ngModel)]="project.description"
+              nz-input
+              name="description"
+              required
+            />
+            <!-- <div
+              *ngIf="
+                nameLocal.invalid && (nameLocal.dirty || nameLocal.touched)
+              "
+            >
+              <nz-form-explain style="color: red"
+                >Bắt buộc nhập</nz-form-explain
+              >
+            </div> -->
+          </nz-form-control>
+          <nz-form-control>
+            <label class="label"> Project Type</label>
+            <nz-select
+              name="projectType"
+              style="width: 100%;"
+              [(ngModel)]="project.type"
+              nzLoading
+            >
+              <nz-option
+                nzValue="fixed price"
+                nzLabel="Fixed Price"
+              ></nz-option>
+              <nz-option nzValue="odc" nzLabel="ODC"></nz-option>
+              <nz-option nzValue="t&m" nzLabel="T&M"></nz-option>
+            </nz-select>
+          </nz-form-control>
+          <nz-form-control
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label"> Start Date - End Date</label>
+            <br />
+            <nz-range-picker
+              [nzRanges]="ranges1"
+              [(ngModel)]="rangeDate"
+              (ngModelChange)="onChange($event)"
+              nzFormat="yyyy/MM/dd"
+              name="range"
+            ></nz-range-picker>
+          </nz-form-control>
+          <!-- {{rangeDate}} -->
+          <nz-form-control *ngIf="me?.role === 'admin'" >
+            <label class="label"> PM</label>
+            <nz-select
+              name="qam"
+              style="width: 100%;"
+              [(ngModel)]="selectedPM"
+            >
+              <nz-option
+                *ngFor="let item of pmList"
+                nzValue="{{ item.id }}"
+                nzLabel="{{ item.name }}"
+              >
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+          <nz-form-control *ngIf="me?.role === 'pm'" >
+            <label class="label"> QAM</label>
+            <nz-select
+              name="qam"
+              style="width: 100%;"
+              [(ngModel)]="selectedQAM"
+            >
+              <nz-option
+                *ngFor="let item of qamList"
+                nzValue="{{ item.id }}"
+                nzLabel="{{ item.name }}"
+              >
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+          <nz-form-control *ngIf="me?.role === 'pm'" >
+            <label class="label"> QAO</label>
+            <nz-select
+              name="qao"
+              nzMode="tags"
+              style="width: 100%;"
+              [(ngModel)]="selectedQAO"
+            >
+              <nz-option
+                *ngFor="let option of qaoList"
+                [nzLabel]="option.name"
+                [nzValue]="option.id"
+              >
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+          <div
+            style="margin-top: 25px; display: flex; justify-content: space-between"
+          >
+            <div class="left">
+              <button (click)="goBack()" nz-button nzType="default">
+                <i nz-icon type="left"></i> Back
+              </button>
+            </div>
+            <div class="right">
+              <button
+                (click)=" editMode? updateProject() : createProject()"
+                style="margin-right:10px"
+                nz-button
+                nzType="primary"
+              >
+                {{ editMode ? "Edit" : "Create" }}
+              </button>
+              <button
+                (click)="resetForm(projectForm)"
+                nz-button
+                nzType="default"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</nz-content>
