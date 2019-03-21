@@ -283,7 +283,14 @@
               </nz-form-control>
               <nz-form-control>
                 File:
-                <a>{{ document?.data?.file }} </a>
+                <a
+                target="_blank"
+                href="https://docs.google.com/gview?url=http://cqms.tech/bkcqms/public/api/view/{{
+                  data.id
+                }}/{{ document.data.file }}&embedded=true"
+              >
+                {{ document?.data?.name }}_version{{document?.data?.version}}
+              </a>
               </nz-form-control>
               <nz-form-control
                 *ngIf="document.permission.file || document.permission.reviewer"
@@ -472,7 +479,14 @@
               </nz-form-control>
               <nz-form-control>
                 File:
-                <a> {{ document?.data?.file }} </a>
+                <a
+                  target="_blank"
+                  href="https://docs.google.com/gview?url=http://cqms.tech/bkcqms/public/api/view/{{
+                    data.id
+                  }}/{{ document.data.file }}&embedded=true"
+                >
+                  {{ document?.data?.name }}_version{{document?.data?.version}}
+                </a>
               </nz-form-control>
               <nz-form-control
                 *ngIf="document.permission.file || document.permission.reviewer"

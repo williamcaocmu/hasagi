@@ -30,7 +30,8 @@ export class ProjectFormComponent implements OnInit {
     qao: [],
     start: null,
     end: null,
-    pm: ""
+    pm: "",
+    role: ""
   };
 
   me ;
@@ -67,6 +68,8 @@ export class ProjectFormComponent implements OnInit {
     this.pmService.getDetailProject(id).subscribe(
       res => {
         if (res["code"] === 1) {
+          this.project.role = res['data']['project']['role'];
+          console.log(this.project)
           if(this.me.role === 'admin'){
             this.selectedPM = res["data"].pm[0].id;
           }
@@ -100,7 +103,8 @@ export class ProjectFormComponent implements OnInit {
   }
 
   updateProject() {
-    if(this.me.role === 'admin'){
+    console.log('dsadsads')
+    if(this.project.role === 'admin'){
       this.project.pm = this.selectedPM;
       this.pmService.updateProjectApi(this.project).subscribe(
         res => {
@@ -113,7 +117,7 @@ export class ProjectFormComponent implements OnInit {
         }
       );
     };
-    if(this.me.role === 'pm'){
+    if(this.project.role === 'pm'){
       this.project.qam = this.selectedQAM;
       this.project.qao = this.selectedQAO;
       this.pmService.updateProjectPMApi(this.project).subscribe(

@@ -32,6 +32,7 @@ export class ManageProjectsComponent implements OnInit {
     this.authService.getMe().subscribe(
       res => {
         this.me = res;
+        
       },
       err => console.log("err", err)
     );
