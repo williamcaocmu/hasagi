@@ -18,7 +18,7 @@ export class PmService {
   }
 
   updateProjectPMApi(data) {
-    return this.http.post(`${this.url}pm/project/assignmember`, data);
+    return this.http.post(`${this.url}all/project/assignmember`, data);
   }
 
   getDetailProject(id) {
@@ -68,4 +68,10 @@ export class PmService {
     // id
     return this.http.get(`${this.url}all/documents/getall/${param}`)
   }
+
+  getPublicDocumentsAPI(){
+    return this.http.get(`${this.url}all/documents/getallpublish/all`)
+  }
+
+
 }

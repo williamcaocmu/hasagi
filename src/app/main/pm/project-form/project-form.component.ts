@@ -4,7 +4,7 @@ import { Location } from "@angular/common";
 import { NgForm } from "@angular/forms";
 import { PmService } from "../pm.service";
 import * as format from "date-fns";
-import { AuthService } from 'src/app/login/auth.service';
+import { AuthService } from "src/app/login/auth.service";
 
 @Component({
   selector: "app-project-form",
@@ -34,7 +34,7 @@ export class ProjectFormComponent implements OnInit {
     role: ""
   };
 
-  me ;
+  me;
 
   constructor(
     private router: Router,
@@ -45,7 +45,7 @@ export class ProjectFormComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    await this.getAuth()
+    await this.getAuth();
     await this.getQA();
     this.activatedRoute.params.subscribe(param => {
       if (param["id"]) {
@@ -68,17 +68,21 @@ export class ProjectFormComponent implements OnInit {
     this.pmService.getDetailProject(id).subscribe(
       res => {
         if (res["code"] === 1) {
-          this.project.role = res['data']['project']['role'];
-          console.log(this.project)
-          if(this.me.role === 'admin'){
+          this.project.role = res["data"]["project"]["role"];
+          if (this.project.role === "admin") {
             this.selectedPM = res["data"].pm[0].id;
           }
-          if(this.me.role === 'pm'){
+          if (this.project.role === "pm") {
             this.selectedQAM = res["data"].qam[0].id;
             let data = res["data"].qao.map(item => {
               return item.id;
             });
             this.selectedQAO = data;
+            this.project.qam = res["data"].project.qam[0].id;
+            this.project.qao = res["data"].project.qao.map(item => item.id);
+            this.selectedQAM = this.project.qam as any;
+            this.selectedQAO = this.project.qao;
+
           }
           this.project = res["data"].project;
           this.rangeDate = [res["data"].project.start, res["data"].project.end];
@@ -103,36 +107,35 @@ export class ProjectFormComponent implements OnInit {
   }
 
   updateProject() {
-    console.log('dsadsads')
-    if(this.project.role === 'admin'){
+    console.log("dsadsads");
+    if (this.project.role === "admin") {
       this.project.pm = this.selectedPM;
       this.pmService.updateProjectApi(this.project).subscribe(
         res => {
           if (res["code"] === 1) {
-            this.router.navigate(['/main/pm/manage-projects'])
+            this.router.navigate(["/main/pm/manage-projects"]);
           }
         },
         err => {
           console.log(err);
         }
       );
-    };
-    if(this.project.role === 'pm'){
+    }
+    if (this.project.role === "pm") {
       this.project.qam = this.selectedQAM;
       this.project.qao = this.selectedQAO;
       this.pmService.updateProjectPMApi(this.project).subscribe(
         res => {
           if (res["code"] === 1) {
-            this.router.navigate(['/main/pm/manage-projects'])
+            this.router.navigate(["/main/pm/manage-projects"]);
           }
         },
         err => {
           console.log(err);
         }
       );
-      console.log(this.project)
+      console.log(this.project);
     }
-   
   }
 
   getQA() {

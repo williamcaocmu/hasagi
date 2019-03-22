@@ -13,7 +13,8 @@ import { ManageProjectsComponent } from "./main/pm/manage-projects/manage-projec
 import { ProjectFormComponent } from "./main/pm/project-form/project-form.component";
 import { PublicDocumentComponent } from "./main/pm/public-document/public-document.component";
 import { DocumentFormComponent } from "./main/pm/document-form/document-form.component";
-import { AllDocumentsComponent } from './main/pm/all-documents/all-documents.component';
+import { AllDocumentsComponent } from "./main/pm/all-documents/all-documents.component";
+import { NewPublicDocumentComponent } from "./main/pm/new-public-document/new-public-document.component";
 
 const routes: Routes = [
   {
@@ -84,6 +85,11 @@ const routes: Routes = [
             canActivate: [AuthGuardService]
           },
           {
+            path: "manage-projects/view/public-document",
+            component: NewPublicDocumentComponent,
+            canActivate: [AuthGuardService]
+          },
+          {
             path: "manage-projects/:id",
             component: ProjectFormComponent,
             canActivate: [AuthGuardService]
@@ -94,14 +100,12 @@ const routes: Routes = [
             component: PublicDocumentComponent,
             canActivate: [AuthGuardService]
           },
-          
+
           {
             path: "manage-projects/view/:id/add",
             component: DocumentFormComponent,
             canActivate: [AuthGuardService]
-          },
-          
-          
+          }
         ]
       }
     ]

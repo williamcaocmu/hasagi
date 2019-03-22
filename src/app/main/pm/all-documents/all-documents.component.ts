@@ -10,23 +10,23 @@ export class AllDocumentsComponent implements OnInit {
   constructor(private pmService: PmService) {}
 
   documents = [];
+  projects = []
+  selectedProject = ""
 
   ngOnInit() {
     this.getAllDocuments();
     this.getAllProjects();
   }
 
-  getAllDocuments() {
-    this.pmService.getAllDocumentAPI().subscribe(
+  getAllDocuments(selectedProject = "all") {
+    this.pmService.getAllDocumentAPI(selectedProject).subscribe(
       res => {
         if (res["code"] === 1) {
           this.documents = [
-            ...this.documents,
             ...res["qam"],
             ...res["reviewer"],
             ...res["uploader"]
           ];
-          console.log(this.documents)
         }
       },
       err => console.log("err", err)
@@ -38,10 +38,14 @@ export class AllDocumentsComponent implements OnInit {
       res => {
         console.log("res", res);
         if (res["code"] === 1) {
-          this
+          this.projects = res['data']
         }
       },
       err => console.log("err", err)
     );
+  }
+
+  search(){
+    this.getAllDocuments(this.selectedProject)
   }
 }

@@ -3,16 +3,39 @@
   style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
 >
   <div style="width: 90%">
-    <div *ngIf="me?.role === 'admin'" (click)="addProject()">
-      <button nz-button nzType="primary">Add Projects</button>
-    </div>
+    <nz-form-control  >
+      <nz-select
+        name="qam"
+        style="width: 100%;"
+        [(ngModel)]="selectedProject"
+      >
+      <nz-option nzValue="all" nzLabel="All" >
 
+      </nz-option>
+        <nz-option
+          *ngFor="let item of projects"
+          nzValue="{{ item.id }}"
+          nzLabel="{{ item.name }}"
+        >
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+     <button
+        nzSize="large"
+        nz-button
+        nzBlock
+        (click)="search()"
+        nzType="primary"
+      >
+      <i nz-icon type="search"></i>
+        Search
+      </button>
     <div style="margin-top:20px">
       <nz-table
         #nzTable
         [nzNoResult]="'No Result'"
         [nzData]="documents"
-        [nzPageSize]="10"
+        [nzPageSize]="25"
         [nzLoading]="loadingTable"
         #filterTable 
       >
@@ -35,25 +58,6 @@
               <td>{{ data.type }}</td>
               <td>{{ data.status  }}</td>
               <td>{{ data.role }}</td>
-              <td>
-                <button
-                  [hidden]="data.role !== 'admin' && data.role !== 'pm'"
-                  (click)="navigateEdit(data.id)"
-                  nz-button
-                  nzType="primary"
-                  nzGhost
-                >
-                  Edit
-                </button>
-                <button
-                  (click)="navigateView(data.id)"
-                  nz-button
-                  nzType="primary"
-                  nzGhost
-                >
-                  View
-                </button>
-              </td>
             </tr>
           </ng-template>
         </tbody>

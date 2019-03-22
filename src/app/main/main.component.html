@@ -66,15 +66,15 @@
             <span title><i nz-icon type="user"></i> Documents</span>
           </a>
         </li>
-        <!-- <li
+        <li
           *ngIf="me?.role !== 'admin'"
           nz-menu-item
           routerLinkActive="ant-menu-item-selected"
         >
-          <a [routerLink]="['/main/pm/manage-projects']">
+          <a [routerLink]="['/main/pm/manage-projects/view/public-document']">
             <span title><i nz-icon type="user"></i> Public Documents</span>
           </a>
-        </li> -->
+        </li>
         <li
           *ngIf="me?.role === 'admin'"
           nz-menu-item
