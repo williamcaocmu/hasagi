@@ -173,6 +173,7 @@
                     (click)="sendComment('uploader')"
                     nz-button
                     nzType="default"
+                    [nzLoading]="uploading"
                   >
                     Comment
                   </button>
@@ -183,6 +184,7 @@
                     nz-button
                     nzType="primary"
                     (click)="approve('uploader')"
+                    [nzLoading]="uploading"
                   >
                     Approve
                   </button>
@@ -190,6 +192,7 @@
                     nz-button
                     nzType="danger"
                     (click)="discard('uploader')"
+                    [nzLoading]="uploading"
                   >
                     Discard
                   </button>
@@ -372,6 +375,7 @@
                     (click)="sendComment('qam')"
                     nz-button
                     nzType="default"
+                    [nzLoading]="uploading"
                   >
                     Comment
                   </button>
@@ -382,10 +386,11 @@
                     nz-button
                     nzType="primary"
                     (click)="approve('qam')"
+                    [nzLoading]="uploading"
                   >
                     Approve
                   </button>
-                  <button nz-button nzType="danger" (click)="discard('qam')">
+                  <button nz-button nzType="danger" (click)="discard('qam')" [nzLoading]="uploading" >
                     Discard
                   </button>
                 </div>
@@ -566,6 +571,7 @@
                     (click)="sendComment('reviewer')"
                     nz-button
                     nzType="default"
+                    [nzLoading]="uploading"
                   >
                     Comment
                   </button>
@@ -576,6 +582,7 @@
                     nz-button
                     nzType="primary"
                     (click)="approve('reviewer')"
+                    [nzLoading]="uploading"
                   >
                     Approve
                   </button>
@@ -583,6 +590,7 @@
                     nz-button
                     nzType="danger"
                     (click)="discard('reviewer')"
+                    [nzLoading]="uploading"
                   >
                     Discard
                   </button>

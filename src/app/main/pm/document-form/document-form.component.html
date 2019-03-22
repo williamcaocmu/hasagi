@@ -58,7 +58,7 @@
                 [nzBeforeUpload]="beforeUpload"
               >
                 <button nz-button>
-                  <i nz-icon type="upload"></i><span>Select File</span>
+                  <i nz-icon type="upload"></i><span>Select   </span>
                 </button>
               </nz-upload>
               <button
@@ -77,7 +77,7 @@
             style="margin-top: 25px; display: flex; justify-content: space-between"
           >
             <div class="left">
-              <button (click)="goBack()" nz-button nzType="default">
+              <button (click)="goBack()" nz-button nzType="default" [nzLoading]="uploading">
                 <i nz-icon type="left"></i> Back
               </button>
             </div>
@@ -87,6 +87,7 @@
                 style="margin-right:10px"
                 nz-button
                 nzType="primary"
+                [nzLoading]="uploading"
               >
                 {{ editMode ? "Edit" : "Create" }}
               </button>
@@ -94,6 +95,7 @@
                 (click)="resetForm(projectForm)"
                 nz-button
                 nzType="default"
+                [nzLoading]="uploading"
               >
                 Reset
               </button>

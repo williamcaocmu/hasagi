@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NzMessageService, UploadFile } from "ng-zorro-antd";
 import { PmService } from "../pm.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-document-form",
@@ -27,7 +28,8 @@ export class DocumentFormComponent implements OnInit {
 
   constructor(
     private pmService: PmService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) {
     this.activatedRoute.params.subscribe(param => {
       this.id = param["id"];
@@ -52,7 +54,7 @@ export class DocumentFormComponent implements OnInit {
     
     this.pmService.createDocumentAPI(this.document).subscribe(
       res => {
-        console.log("success", res);
+        this.goBack()
       },
       err => {
         console.log("err", err);
@@ -80,6 +82,10 @@ export class DocumentFormComponent implements OnInit {
         this.uploading = false;
       }
     );
+  }
+
+  goBack(){
+    this.location.back()
   }
 
   
