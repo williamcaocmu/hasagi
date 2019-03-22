@@ -3,33 +3,38 @@
   style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
 >
   <div style="width: 90%">
-    <nz-form-control  >
-      <nz-select
-        name="qam"
-        style="width: 100%;"
-        [(ngModel)]="selectedProject"
-      >
-      <nz-option nzValue="all" nzLabel="All" >
-
-      </nz-option>
-        <nz-option
-          *ngFor="let item of projects"
-          nzValue="{{ item.id }}"
-          nzLabel="{{ item.name }}"
-        >
-        </nz-option>
-      </nz-select>
-    </nz-form-control>
-     <button
-        nzSize="large"
-        nz-button
-        nzBlock
-        (click)="search()"
-        nzType="primary"
-      >
-      <i nz-icon type="search"></i>
-        Search
-      </button>
+    <div style="display: flex; justify-content: space-around" >
+        <nz-form-control    style="width: 40%;margin-bottom: 10px">
+            <nz-select
+              name="qam"
+              style="width: 100%;"
+              [(ngModel)]="selectedProject"
+            >
+            <nz-option nzValue="all" nzLabel="All" >
+      
+            </nz-option>
+              <nz-option
+                *ngFor="let item of projects"
+                nzValue="{{ item.id }}"
+                nzLabel="{{ item.name }}"
+              >
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+          <div style="padding-top: 5px; width: 40%;" >
+              <button
+              nz-button
+              style="width: 100%; padding-top: 5px"
+              (click)="search()"
+              nzType="primary"
+            >
+            <i nz-icon type="search"></i>
+              Search
+            </button>
+          </div>
+           
+    </div>
+   
     <div style="margin-top:20px">
       <nz-table
         #nzTable
