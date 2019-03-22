@@ -52,6 +52,7 @@ export class ProjectFormComponent implements OnInit {
         this.editMode = true;
         this.getDetail(param["id"]);
       }
+      console.log(this.project)
     });
   }
 

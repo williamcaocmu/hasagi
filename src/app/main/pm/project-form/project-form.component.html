@@ -71,7 +71,7 @@
             ></nz-range-picker>
           </nz-form-control>
           <!-- {{rangeDate}} -->
-          <nz-form-control *ngIf="project?.role === 'admin'" >
+          <nz-form-control *ngIf="project?.role === 'admin' || me?.role === 'admin' " >
             <label class="label"> PM</label>
             <nz-select
               name="qam"
