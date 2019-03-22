@@ -52,7 +52,7 @@ export class ProjectFormComponent implements OnInit {
         this.editMode = true;
         this.getDetail(param["id"]);
       }
-      console.log(this.project)
+
     });
   }
 
@@ -79,7 +79,8 @@ export class ProjectFormComponent implements OnInit {
               return item.id;
             });
             this.selectedQAO = data;
-            this.project.qam = res["data"].project.qam[0].id;
+            console.log(res['data'])
+            this.project.qam = res["data"].project.qam && res["data"].project.qam[0] && res["data"].project.qam[0].id
             this.project.qao = res["data"].project.qao.map(item => item.id);
             this.selectedQAM = this.project.qam as any;
             this.selectedQAO = this.project.qao;
