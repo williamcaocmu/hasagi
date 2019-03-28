@@ -2,8 +2,14 @@
   class="content"
   style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
 >
-  <div style="width: 90%">
-    <nz-table #nzTable [nzNoResult]="'No Result'" [nzData]="accounts" [nzPageSize]="10" [nzLoading]="loadingTable" >
+  <div style="width: 90%; overflow: scroll;">
+    <nz-table
+      #nzTable
+      [nzNoResult]="'No Result'"
+      [nzData]="accounts"
+      [nzPageSize]="10"
+      [nzLoading]="loadingTable"
+    >
       <thead>
         <tr>
           <th>Username</th>
@@ -16,11 +22,13 @@
       <tbody>
         <ng-template ngFor let-data [ngForOf]="nzTable.data">
           <tr>
-            <td>{{ data.name }}</td>
-            <td>{{ data.email }}</td>
-            <td>{{ data.role }}</td>
-            <td>{{ data.status? 'Active' : 'Deactive' }}</td>
-            <td>
+            <td style="width: 240px">{{ data.name }}</td>
+            <td style="width: 240px">{{ data.email }}</td>
+            <td style="width: 240px">{{ data.role }}</td>
+            <td style="width: 240px">
+              {{ data.status ? "Active" : "Deactive" }}
+            </td>
+            <td style="width: 240px">
               <button
                 (click)="navigateEdit(data.id)"
                 nz-button

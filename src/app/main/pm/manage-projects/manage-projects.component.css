@@ -17,6 +17,8 @@
 }
 
 
-.anticon.ant-table-filter-icon.ant-dropdown-trigger{
-  
+.width150{
+  width: 150px !important;
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }

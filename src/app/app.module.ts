@@ -26,6 +26,7 @@ import { ProjectFormComponent } from './main/pm/project-form/project-form.compon
 import { DocumentFormComponent } from './main/pm/document-form/document-form.component';
 import { NewPublicDocumentComponent } from './main/pm/new-public-document/new-public-document.component';
 import { AllDocumentsComponent } from './main/pm/all-documents/all-documents.component';
+import { RouterModule } from '@angular/router';
 registerLocaleData(en);
 
 
@@ -52,7 +53,8 @@ registerLocaleData(en);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
   ],
   providers: [
     AuthService,

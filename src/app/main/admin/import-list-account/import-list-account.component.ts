@@ -13,10 +13,12 @@ export class ImportListAccountComponent implements OnInit {
   uploading = false;
   fileList: UploadFile[] = [];
   errors = [];
-
+  loadingTable = false;
+  accounts = [];
   constructor(
     private http: AdminServiceService,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private adminService: AdminServiceService
   ) {}
 
   beforeUpload = (file: UploadFile): boolean => {
@@ -42,5 +44,23 @@ export class ImportListAccountComponent implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  getAccounts() {
+    this.loadingTable = true;
+    this.adminService.getAllAccount().subscribe(
+      success => {
+        if (success["code"] === 1) {
+          this.accounts = success["data"];
+          this.loadingTable = false;
+        }
+      },
+      err => {
+        console.log("err");
+        this.loadingTable = false;
+      }
+    );
+  }
+
+  ngOnInit() {
+    this.getAccounts()
+  }
 }

@@ -3,48 +3,45 @@
   style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
 >
   <div style="width: 90%">
-    <div style="display: flex; " >
-        <nz-form-control    style="width: 40%;margin-bottom: 10px">
-            <nz-select
-              name="qam"
-              style="width: 100%;"
-              [(ngModel)]="selectedProject"
-            >
-            <nz-option nzValue="all" nzLabel="All" >
-      
-            </nz-option>
-              <nz-option
-                *ngFor="let item of projects"
-                nzValue="{{ item.id }}"
-                nzLabel="{{ item.name }}"
-              >
-              </nz-option>
-            </nz-select>
-          </nz-form-control>
-          <div style="padding: 4px 0 0 5px; width: 10%;" >
-              <button
-              nz-button
-              style="width: 100%; "
-              (click)="search()"
-              nzType="primary"
-            >
-            <i nz-icon type="search"></i>
-              Search
-            </button>
-          </div>
-           
+    <div style="display: flex; ">
+      <nz-form-control style="width: 40%;margin-bottom: 10px">
+        <nz-select
+          name="qam"
+          style="width: 100%;"
+          [(ngModel)]="selectedProject"
+        >
+          <nz-option nzValue="all" nzLabel="All"> </nz-option>
+          <nz-option
+            *ngFor="let item of projects"
+            nzValue="{{ item.id }}"
+            nzLabel="{{ item.name }}"
+          >
+          </nz-option>
+        </nz-select>
+      </nz-form-control>
+      <div style="padding: 4px 0 0 5px; width: 10%;">
+        <button
+          nz-button
+          style="width: 100%; "
+          (click)="search()"
+          nzType="primary"
+        >
+          <i nz-icon type="search"></i>
+          Search
+        </button>
+      </div>
     </div>
-   
-    <div style="margin-top:20px">
+
+    <div style="margin-top:20px; overflow: scroll">
       <nz-table
         #nzTable
         [nzNoResult]="'No Result'"
         [nzData]="documents"
         [nzPageSize]="25"
         [nzLoading]="loadingTable"
-        #filterTable 
+        #filterTable
       >
-        <thead >
+        <thead>
           <tr>
             <th nzCustomFilter>
               Project Name
@@ -52,17 +49,17 @@
             <th>Type</th>
             <th>Status</th>
             <th>Role</th>
-           
+
             <th></th>
           </tr>
         </thead>
         <tbody>
           <ng-template ngFor let-data [ngForOf]="nzTable.data">
             <tr>
-              <td>{{ data.name }}</td>
-              <td>{{ data.type }}</td>
-              <td>{{ data.status  }}</td>
-              <td>{{ data.role }}</td>
+              <td style="width: 300px">{{ data.name }}</td>
+              <td style="width: 300px">{{ data.type }}</td>
+              <td style="width: 300px">{{ data.status }}</td>
+              <td style="width: 300px">{{ data.role }}</td>
             </tr>
           </ng-template>
         </tbody>

@@ -2,27 +2,27 @@
   class="content"
   style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
 >
-  <div style="width: 90%">
+  <div style="width: 100%; overflow: scroll">
     <div *ngIf="me?.role === 'admin'" (click)="addProject()">
       <button nz-button nzType="primary">Add Projects</button>
     </div>
 
-    <div style="margin-top:20px">
+    <div style="margin-top:20px; overflow: scroll">
       <nz-table
         #nzTable
         [nzNoResult]="'No Result'"
         [nzData]="projects"
         [nzPageSize]="10"
         [nzLoading]="loadingTable"
-        #filterTable 
+        #filterTable
       >
-        <thead >
+        <thead>
           <tr>
-            <th nzCustomFilter>
+            <th>
               Project Name
             </th>
-            <th >Description</th>
-            <th  >Role</th>
+            <th>Description</th>
+            <th>Role</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>PM Name</th>
@@ -33,14 +33,16 @@
         <tbody>
           <ng-template ngFor let-data [ngForOf]="nzTable.data">
             <tr>
-              <td>{{ data.name }}</td>
-              <td>{{ data.description }}</td>
-              <td>{{ data.role }}</td>
-              <td>{{ data.start }}</td>
-              <td>{{ data.end }}</td>
-              <td>{{ data.role }}</td>
-              <td>{{ data.status ? "Active" : "Deactive" }}</td>
-              <td>
+              <td style="width: 150px">{{ data.name }}</td>
+              <td class="width150">{{data.description }}</td>
+              <td class="width150">{{ data.role }}</td>
+              <td style="width: 150px">{{ data.start }}</td>
+              <td style="width: 150px">{{ data.end }}</td>
+              <td style="width: 150px">{{ data.role }}</td>
+              <td style="width: 150px">
+                {{ data.status ? "Active" : "Deactive" }}
+              </td>
+              <td style="width: 150px">
                 <button
                   [hidden]="data.role !== 'admin' && data.role !== 'pm'"
                   (click)="navigateEdit(data.id)"

@@ -4,9 +4,28 @@
 >
   <div class="form-container">
     <form>
-      <div class="form-title">{{editMode? 'edit account' :"create"}}</div>
-      <h4 style="color: gray">{{editMode? 'edit': 'create'}} your account</h4>
+      <div class="form-title">{{ editMode ? "edit account" : "create" }}</div>
+      <h4 style="color: gray">
+        {{ editMode ? "edit" : "create" }} your account
+      </h4>
       <hr />
+      <nz-form-control
+        style="margin-top:10px"
+        nzValidateStatus="success"
+        nzHasFeedback="false"
+      >
+        <label class="label">Account Id</label>
+        <input
+          nz-input
+          [(ngModel)]="account.staffid"
+          name="staffid"
+          required
+          #staffid="ngModel"
+        />
+        <div *ngIf="staffid.invalid && (staffid.dirty || staffid.touched)">
+          <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
+        </div>
+      </nz-form-control>
       <nz-form-item>
         <nz-form-control
           style="margin-top:10px"
@@ -48,23 +67,7 @@
             <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
           </div>
         </nz-form-control>
-        <nz-form-control
-          style="margin-top:10px"
-          nzValidateStatus="success"
-          nzHasFeedback="false"
-        >
-          <label class="label">Staff Id</label>
-          <input
-            nz-input
-            [(ngModel)]="account.staffid"
-            name="staffid"
-            required
-            #staffid="ngModel"
-          />
-          <div *ngIf="staffid.invalid && (staffid.dirty || staffid.touched)">
-            <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>
-          </div>
-        </nz-form-control>
+
         <nz-form-control
           style="margin-top:10px"
           nzValidateStatus="success"
@@ -116,7 +119,7 @@
         nzHasFeedback="false"
       >
         <label class="label">Status</label>
-        <br>
+        <br />
         <nz-switch name="status" [(ngModel)]="account.status"></nz-switch>
       </nz-form-control>
 
@@ -125,7 +128,7 @@
         style="margin-top:20px; background-color: green; color: white"
         nz-button
         nzBlock
-        (click)=" editMode ? editAccount() :  createAccount()"
+        (click)="editMode ? editAccount() : createAccount()"
         [disabled]="
           nameLocal.invalid ||
           emailLocal.invalid ||
@@ -134,7 +137,18 @@
           passwordLocal.invalid
         "
       >
-        {{ editMode ? "Edit Account" : "Create Account"}}
+        {{ editMode ? "Update" : "Create Account" }}
+      </button>
+      <button
+        *ngIf="editMode"
+        nzSize="large"
+        style="margin-top:20px; background-color: white; color: black"
+        nz-button
+        nzBlock
+        (click)="navigate()"
+       
+      >
+        Cancel
       </button>
     </form>
   </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AdminServiceService } from "../admin-service.service";
 import { NotificationService } from "src/app/services/notification.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-add-new-account",
@@ -13,7 +14,8 @@ export class AddNewAccountComponent implements OnInit {
     private adminService: AdminServiceService,
     private notificationService: NotificationService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   editMode = false;
@@ -91,5 +93,9 @@ export class AddNewAccountComponent implements OnInit {
         this.router.navigate(["/main/admin/manage-account"]);
       }
     });
+  }
+
+  navigate(){
+    this.location.back()
   }
 }
