@@ -14,8 +14,8 @@ export class NewPublicDocumentComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.text = this.activatedRoute.queryParams._value.text;
-    this.type = this.activatedRoute.queryParams._value.type;
+    this.text = this.activatedRoute.queryParams["_value"].text;
+    this.type = this.activatedRoute.queryParams["_value"].type;
   }
   documents = [];
   state$;
@@ -28,11 +28,11 @@ export class NewPublicDocumentComponent implements OnInit {
 
   ngDoCheck() {
     if (
-      this.text !== this.activatedRoute.queryParams._value.text ||
-      this.type !== this.activatedRoute.queryParams._value.type
+      this.text !== this.activatedRoute.queryParams["_value"].text ||
+      this.type !== this.activatedRoute.queryParams["_value"].type
     ) {
-      this.text = this.activatedRoute.queryParams._value.text;
-      this.type = this.activatedRoute.queryParams._value.type;
+      this.text = this.activatedRoute.queryParams["_value"].text;
+      this.type = this.activatedRoute.queryParams["_value"].type;
       this.getPublicDocument(this.type, this.text);
     }
   }
