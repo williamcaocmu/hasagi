@@ -15,6 +15,8 @@ import { PublicDocumentComponent } from "./main/pm/public-document/public-docume
 import { DocumentFormComponent } from "./main/pm/document-form/document-form.component";
 import { AllDocumentsComponent } from "./main/pm/all-documents/all-documents.component";
 import { NewPublicDocumentComponent } from "./main/pm/new-public-document/new-public-document.component";
+import { AuditPlanListComponent } from "./main/pm/audit-plan-list/audit-plan-list.component";
+import { CreateAuditPlanComponent } from "./main/pm/create-audit-plan/create-audit-plan.component";
 
 const routes: Routes = [
   {
@@ -104,6 +106,16 @@ const routes: Routes = [
           {
             path: "manage-projects/view/:id/add",
             component: DocumentFormComponent,
+            canActivate: [AuthGuardService]
+          },
+          {
+            path: "audit-plans",
+            component: AuditPlanListComponent,
+            canActivate: [AuthGuardService]
+          },
+          {
+            path: "audit-plans/add",
+            component: CreateAuditPlanComponent,
             canActivate: [AuthGuardService]
           }
         ]

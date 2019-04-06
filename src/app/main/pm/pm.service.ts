@@ -73,5 +73,15 @@ export class PmService {
     return this.http.get(`${this.url}all/documents/getallpublish/all`)
   }
 
+  getDocumentFromOtherPage(type, text){
+    return this.http.get(`${this.url}all/documents/searchpublish?doctype=${type}&search=${text}`)
+  }
+
+  postAudit(audit){
+    return this.http.post(`${this.url}all/audit/add`, audit)
+  }
+
+  
+  
 
 }

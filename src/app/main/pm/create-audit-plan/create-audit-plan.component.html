@@ -1,0 +1,144 @@
+<nz-content
+  class="content"
+  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div style="width: 90%">
+    <h1 style="text-transform: uppercase">
+      {{ editMode ? "Edit" : "Create" }} Document
+    </h1>
+    <div style="margin-top:20px">
+      <form #projectForm="ngForm">
+        <nz-form-control>
+          <label class="label"> Projects </label>
+          <nz-select
+            name="projectType"
+            style="width: 100%;"
+            [(ngModel)]="audit.projectid"
+          >
+            <nz-option
+              *ngFor="let project of projects"
+              nzValue="{{ project.id }}"
+              nzLabel="{{ project.name }}"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+        <nz-form-item>
+          <nz-form-control
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label">Audit Name</label>
+            <input nz-input name="name" required [(ngModel)]="audit.name" />
+          </nz-form-control>
+          <nz-form-control
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label">Description</label>
+            <input
+              nz-input
+              name="description"
+              required
+              [(ngModel)]="audit.description"
+            />
+          </nz-form-control>
+          <nz-form-control
+          style="margin-top:10px"
+          nzValidateStatus="success"
+          nzHasFeedback="false"
+        >
+          <label class="label">Content</label>
+          <input
+            nz-input
+            name="content"
+            required
+            [(ngModel)]="audit.content"
+          />
+        </nz-form-control>
+          <nz-form-control
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label"> Start Date - End Date</label>
+            <br />
+            <nz-range-picker
+              [nzRanges]="ranges1"
+              [(ngModel)]="rangeDate"
+              (ngModelChange)="onChange($event)"
+              nzFormat="yyyy/MM/dd"
+              name="range"
+            ></nz-range-picker>
+          </nz-form-control>
+
+          <div>
+            <p>
+              <span style="font-size: 25px; padding: 5px 25px 0 0"
+                >Audit Checklist</span
+              >
+              <button
+                (click)="addQuestion()"
+                nz-button
+                nzType="primary"
+                nzShape="circle"
+              >
+                <i nz-icon type="plus"></i>
+              </button>
+            </p>
+
+            <nz-form-control
+              *ngFor="let q of questions; let i = index"
+              style="margin-top:10px"
+              nzValidateStatus="success"
+              nzHasFeedback="false"
+            >
+              <label class="label">Question {{ i + 1 }} </label>
+              <input
+                nz-input
+                name="question{{ i }}"
+                required
+                [(ngModel)]="questions[i].question"
+              />
+            </nz-form-control>
+          </div>
+
+          <div
+            style="margin-top: 25px; display: flex; justify-content: space-between"
+          >
+            <div class="left">
+              <button
+                (click)="goBack()"
+                nz-button
+                nzType="default"
+                [nzLoading]="uploading"
+              >
+                <i nz-icon type="left"></i> Back
+              </button>
+            </div>
+            <div class="right">
+              <button
+                (click)="createAuditPlan()"
+                style="margin-right:10px"
+                nz-button
+                nzType="primary"
+                [nzLoading]="uploading"
+              >
+                {{ editMode ? "Edit" : "Create" }}
+              </button>
+              <button
+                (click)="resetForm(projectForm)"
+                nz-button
+                nzType="default"
+                [nzLoading]="uploading"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</nz-content>

@@ -1,0 +1,50 @@
+<nz-content
+  class="content"
+  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div style="width: 90%">
+    <div (click)="addAuditPlan()">
+      <button nz-button nzType="primary">Add Audit Plan</button>
+    </div>
+    <div style="margin-top:20px; ">
+      <nz-table
+        #nzTable
+        [nzNoResult]="'No Result'"
+        [nzData]="documents"
+        [nzPageSize]="25"
+        [nzLoading]="loadingTable"
+        #filterTable
+      >
+        <thead>
+          <tr>
+            <th nzCustomFilter>
+              STT
+            </th>
+            <th>Audit Name</th>
+            <th>Description</th>
+            <th>Owner</th>
+            <th>Created_at</th>
+            <th>Status</th>
+            <th>Project</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-data [ngForOf]="nzTable.data">
+            <tr>
+              <td>{{ data.name }}</td>
+              <td>{{ data.description }}</td>
+              <td>{{ data.version }}</td>
+              <td>{{ data.type }}</td>
+              <td>{{ data.status }}</td>
+              <td>
+                <a target="_blank" href="{{ data.file }}">
+                  File
+                </a>
+              </td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</nz-content>

@@ -27,6 +27,8 @@ import { DocumentFormComponent } from './main/pm/document-form/document-form.com
 import { NewPublicDocumentComponent } from './main/pm/new-public-document/new-public-document.component';
 import { AllDocumentsComponent } from './main/pm/all-documents/all-documents.component';
 import { RouterModule } from '@angular/router';
+import { AuditPlanListComponent } from './main/pm/audit-plan-list/audit-plan-list.component';
+import { CreateAuditPlanComponent } from './main/pm/create-audit-plan/create-audit-plan.component';
 registerLocaleData(en);
 
 
@@ -45,7 +47,9 @@ registerLocaleData(en);
     ProjectFormComponent,
     DocumentFormComponent,
     NewPublicDocumentComponent,
-    AllDocumentsComponent
+    AllDocumentsComponent,
+    AuditPlanListComponent,
+    CreateAuditPlanComponent
   ],
   imports: [
     BrowserModule,
