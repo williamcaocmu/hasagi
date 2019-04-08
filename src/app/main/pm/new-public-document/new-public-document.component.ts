@@ -25,11 +25,9 @@ export class NewPublicDocumentComponent implements OnInit {
   ngOnInit() {
     this.getPublicDocument(this.type, this.text);
     this.activatedRoute.queryParams.subscribe(query => {
-      
-      this.getPublicDocument(query.type, query.text);
+      this.getPublicDocument(query.type || "all", query.text || "");
     });
   }
-
 
   async getPublicDocument(type, text) {
     this.pmService.getDocumentFromOtherPage(type, text).subscribe(

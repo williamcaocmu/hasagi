@@ -2,8 +2,8 @@
   class="content"
   style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; flex-direction: column "
 >
-  <div style="width: 100% ; display: flex; justify-content: center;">
-    <div>
+  <div style="width: 100%; margin: 0 auto;">
+    <div style="display:flex; justify-content:center; padding-bottom: 30px">
       <nz-upload
         [nzLimit]="2"
         [(nzFileList)]="fileList"
@@ -19,7 +19,7 @@
         [nzLoading]="uploading"
         (click)="handleUpload()"
         [disabled]="fileList.length == 0"
-        style="margin-top: 16px"
+        style="margin-left: 10px"
       >
         {{ uploading ? "Uploading" : "Import" }}
       </button>
@@ -35,9 +35,7 @@
     </div>
   </div>
 
-  <div
-    style="width: 100%;  display: flex; justify-content: center;"
-  >
+  <div style="width: 100%;  display: flex; justify-content: center;">
     <nz-table
       #nzTable
       [nzNoResult]="'No Result'"
