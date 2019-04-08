@@ -14,28 +14,22 @@ export class NewPublicDocumentComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.text = this.activatedRoute.queryParams["_value"].text;
-    this.type = this.activatedRoute.queryParams["_value"].type;
+    // this.text = this.activatedRoute.queryParams["_value"].text;
+    // this.type = this.activatedRoute.queryParams["_value"].type;
   }
   documents = [];
-  state$;
+
   text = "";
   type = "";
 
   ngOnInit() {
     this.getPublicDocument(this.type, this.text);
+    this.activatedRoute.queryParams.subscribe(query => {
+      
+      this.getPublicDocument(query.type, query.text);
+    });
   }
 
-  ngDoCheck() {
-    if (
-      this.text !== this.activatedRoute.queryParams["_value"].text ||
-      this.type !== this.activatedRoute.queryParams["_value"].type
-    ) {
-      this.text = this.activatedRoute.queryParams["_value"].text;
-      this.type = this.activatedRoute.queryParams["_value"].type;
-      this.getPublicDocument(this.type, this.text);
-    }
-  }
 
   async getPublicDocument(type, text) {
     this.pmService.getDocumentFromOtherPage(type, text).subscribe(
