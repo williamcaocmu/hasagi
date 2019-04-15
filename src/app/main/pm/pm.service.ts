@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class PmService {
   url = `http://cqms.tech/bkcqms/public/api/`;
@@ -41,47 +41,61 @@ export class PmService {
     return this.http.get(`${this.url}all/documents/getreviewinfo/${id}`);
   }
 
-  getAllDocuments(projectId){
-    return this.http.get(`${this.url}all/documents/getall/${projectId}`)
+  getAllDocuments(projectId) {
+    return this.http.get(`${this.url}all/documents/getall/${projectId}`);
   }
 
-  getDetailDocument(documentId, role){
-    return this.http.get(`${this.url}all/documents/get/${documentId}/${role}`)
+  getDetailDocument(documentId, role) {
+    return this.http.get(`${this.url}all/documents/get/${documentId}/${role}`);
   }
 
-  postFile(file){
+  postFile(file) {
     let formData = new FormData();
-    formData.append("file", file, file.name);
+    formData.append('file', file, file.name);
     return this.http.post(`${this.url}all/documents/middleupload`, formData);
   }
 
-  approveAPI(data){
-    return this.http.post(`${this.url}all/documents/update`, data)
+  approveAPI(data) {
+    return this.http.post(`${this.url}all/documents/update`, data);
   }
 
-  sendCommentAPI(data){
-    return this.http.post(`${this.url}all/documents/comment`, data)
+  sendCommentAPI(data) {
+    return this.http.post(`${this.url}all/documents/comment`, data);
   }
 
-  getAllDocumentAPI(param = 'all'){
-    //all 
+  getAllDocumentAPI(param = 'all') {
+    //all
     // id
-    return this.http.get(`${this.url}all/documents/getall/${param}`)
+    return this.http.get(`${this.url}all/documents/getall/${param}`);
   }
 
-  getPublicDocumentsAPI(){
-    return this.http.get(`${this.url}all/documents/getallpublish/all`)
+  getPublicDocumentsAPI() {
+    return this.http.get(`${this.url}all/documents/getallpublish/all`);
   }
 
-  getDocumentFromOtherPage(type, text){
-    return this.http.get(`${this.url}all/documents/searchpublish?doctype=${type}&search=${text}`)
+  getDocumentFromOtherPage(type, text) {
+    return this.http.get(
+      `${this.url}all/documents/searchpublish?doctype=${type}&search=${text}`
+    );
   }
 
-  postAudit(audit){
-    return this.http.post(`${this.url}all/audit/add`, audit)
+  postAudit(audit) {
+    return this.http.post(`${this.url}all/audit/add`, audit);
   }
 
-  
-  
+  getListAuditPlan() {
+    return this.http.get(`${this.url}all/audit/getall`);
+  }
 
+  getDetailAuditPlan(id) {
+    return this.http.get(`${this.url}all/audit/get/${id}`);
+  }
+
+  commentAuditPlan(data) {
+    return this.http.post(`${this.url}all/audit/comment`, data);
+  }
+
+  approveAuditAPI(data) {
+    return this.http.post(`${this.url}all/audit/update`, data);
+  }
 }

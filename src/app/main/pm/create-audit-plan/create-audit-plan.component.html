@@ -4,11 +4,11 @@
 >
   <div style="width: 90%">
     <h1 style="text-transform: uppercase">
-      {{ editMode ? "Edit" : "Create" }} Document
+      {{ editMode ? 'Edit' : 'Create' }} Audit Plan
     </h1>
     <div style="margin-top:20px">
       <form #projectForm="ngForm">
-        <nz-form-control>
+        <nz-form-control *ngIf="!editMode">
           <label class="label"> Projects </label>
           <nz-select
             name="projectType"
@@ -29,7 +29,13 @@
             nzHasFeedback="false"
           >
             <label class="label">Audit Name</label>
-            <input nz-input name="name" required [(ngModel)]="audit.name" />
+            <input
+              nz-input
+              name="name"
+              required
+              [(ngModel)]="audit.name"
+              [disabled]="!permission.form"
+            />
           </nz-form-control>
           <nz-form-control
             style="margin-top:10px"
@@ -42,21 +48,23 @@
               name="description"
               required
               [(ngModel)]="audit.description"
+              [disabled]="!permission.form"
             />
           </nz-form-control>
           <nz-form-control
-          style="margin-top:10px"
-          nzValidateStatus="success"
-          nzHasFeedback="false"
-        >
-          <label class="label">Content</label>
-          <input
-            nz-input
-            name="content"
-            required
-            [(ngModel)]="audit.content"
-          />
-        </nz-form-control>
+            style="margin-top:10px"
+            nzValidateStatus="success"
+            nzHasFeedback="false"
+          >
+            <label class="label">Content</label>
+            <input
+              [disabled]="!permission.form"
+              nz-input
+              name="content"
+              required
+              [(ngModel)]="audit.content"
+            />
+          </nz-form-control>
           <nz-form-control
             style="margin-top:10px"
             nzValidateStatus="success"
@@ -65,6 +73,7 @@
             <label class="label"> Start Date - End Date</label>
             <br />
             <nz-range-picker
+              [nzDisabled]="!permission.form"
               [nzRanges]="ranges1"
               [(ngModel)]="rangeDate"
               (ngModelChange)="onChange($event)"
@@ -79,6 +88,7 @@
                 >Audit Checklist</span
               >
               <button
+                *ngIf="permission.form"
                 (click)="addQuestion()"
                 nz-button
                 nzType="primary"
@@ -96,11 +106,51 @@
             >
               <label class="label">Question {{ i + 1 }} </label>
               <input
+                [disabled]="!permission.form"
                 nz-input
                 name="question{{ i }}"
                 required
                 [(ngModel)]="questions[i].question"
               />
+            </nz-form-control>
+
+            <nz-form-control style="margin-top:10px">
+              <label class="label">Comment</label>
+              <div
+                style="width: 100%; padding: 0 5rem; max-height: 200px; overflow: scroll;"
+              >
+                <nz-list
+                  [nzDataSource]="audit.comments"
+                  [nzRenderItem]="item"
+                  [nzItemLayout]="'horizontal'"
+                  [nzLoading]="loading"
+                >
+                  <ng-template #item let-item>
+                    <nz-list-item>
+                      <nz-list-item-meta
+                        [nzTitle]="item.user"
+                        nzDescription="{{ item.content }}"
+                      >
+                        <ng-template #nzTitle> </ng-template>
+                      </nz-list-item-meta>
+                    </nz-list-item>
+                  </ng-template>
+                </nz-list>
+              </div>
+            </nz-form-control>
+
+            <nz-form-control style="margin-top:10px" *ngIf="editMode">
+              <textarea name="comment" rows="4" nz-input [(ngModel)]="comment">
+              </textarea>
+              <button
+                (click)="postComment()"
+                nz-button
+                nzType="default"
+                [nzLoading]="uploading"
+                *ngIf="editMode"
+              >
+                Comment
+              </button>
             </nz-form-control>
           </div>
 
@@ -124,16 +174,27 @@
                 nz-button
                 nzType="primary"
                 [nzLoading]="uploading"
+                *ngIf="permission.form"
               >
-                {{ editMode ? "Edit" : "Create" }}
+                {{ editMode ? 'Edit' : 'Create' }}
               </button>
               <button
-                (click)="resetForm(projectForm)"
                 nz-button
                 nzType="default"
                 [nzLoading]="uploading"
+                *ngIf="permission.approve && editMode"
+                (click)="sendAction(1)"
               >
-                Reset
+                Approve
+              </button>
+              <button
+                nz-button
+                nzType="danger"
+                [nzLoading]="uploading"
+                (click)="sendAction(0)"
+                *ngIf="permission.approve && editMode"
+              >
+                Discard
               </button>
             </div>
           </div>

@@ -29,6 +29,8 @@ import { AllDocumentsComponent } from './main/pm/all-documents/all-documents.com
 import { RouterModule } from '@angular/router';
 import { AuditPlanListComponent } from './main/pm/audit-plan-list/audit-plan-list.component';
 import { CreateAuditPlanComponent } from './main/pm/create-audit-plan/create-audit-plan.component';
+import { TypeComponent } from './type/type.component';
+import { PuclicAuditPlanComponent } from './main/pm/puclic-audit-plan/puclic-audit-plan.component';
 registerLocaleData(en);
 
 
@@ -49,7 +51,9 @@ registerLocaleData(en);
     NewPublicDocumentComponent,
     AllDocumentsComponent,
     AuditPlanListComponent,
-    CreateAuditPlanComponent
+    CreateAuditPlanComponent,
+    TypeComponent,
+    PuclicAuditPlanComponent
   ],
   imports: [
     BrowserModule,

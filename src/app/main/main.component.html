@@ -113,12 +113,21 @@
           </a>
         </li>
         <li
-          *ngIf="me?.role === 'qao'"
+          *ngIf="me?.role !== 'admin'"
           nz-menu-item
           routerLinkActive="ant-menu-item-selected"
         >
           <a [routerLink]="['/main/pm/audit-plans']">
             <span title><i nz-icon type="user"></i> Audit Plan </span>
+          </a>
+        </li>
+        <li
+          *ngIf="me?.role !== 'admin'"
+          nz-menu-item
+          routerLinkActive="ant-menu-item-selected"
+        >
+          <a [routerLink]="['/main/pm/public-audit-plans']">
+            <span title><i nz-icon type="user"></i>Public Audit Plan </span>
           </a>
         </li>
       </ul>

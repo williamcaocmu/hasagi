@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { PmService } from '../pm.service';
 
 @Component({
-  selector: 'app-audit-plan-list',
-  templateUrl: './audit-plan-list.component.html',
-  styleUrls: ['./audit-plan-list.component.css']
+  selector: 'app-puclic-audit-plan',
+  templateUrl: './puclic-audit-plan.component.html',
+  styleUrls: ['./puclic-audit-plan.component.css']
 })
-export class AuditPlanListComponent implements OnInit {
+export class PuclicAuditPlanComponent implements OnInit {
   constructor(private router: Router, private pmService: PmService) {}
   auditPlan = [];
   projects = [];
