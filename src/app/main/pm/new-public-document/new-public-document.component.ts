@@ -35,6 +35,7 @@ export class NewPublicDocumentComponent implements OnInit {
         if (res["code"] === 1) {
           this.documents = res["data"];
         }
+        
       },
       err => {
         console.log("err", err);

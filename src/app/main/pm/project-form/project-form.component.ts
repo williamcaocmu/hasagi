@@ -5,6 +5,7 @@ import { NgForm } from "@angular/forms";
 import { PmService } from "../pm.service";
 import * as format from "date-fns";
 import { AuthService } from "src/app/login/auth.service";
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: "app-project-form",
@@ -41,7 +42,8 @@ export class ProjectFormComponent implements OnInit {
     private location: Location,
     private pmService: PmService,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private noti: NotificationService
   ) {}
 
   async ngOnInit() {
@@ -103,6 +105,9 @@ export class ProjectFormComponent implements OnInit {
         if (res["code"] === 1) {
           this.router.navigate(["/main/pm/manage-projects"]);
         }
+        else if(res['code'] === 0) {
+          this.noti.show('error', 'Error', res['message'].name[0]);
+        }
       },
       err => console.log("err", err)
     );
@@ -116,6 +121,9 @@ export class ProjectFormComponent implements OnInit {
         res => {
           if (res["code"] === 1) {
             this.router.navigate(["/main/pm/manage-projects"]);
+          }
+          else if(res['code'] === 0) {
+            this.noti.show('error', 'Error', res['message'].name[0]);
           }
         },
         err => {

@@ -1,3 +1,36 @@
+<div>
+  <nz-form-control
+    style="margin-top:10px"
+    nzValidateStatus="success"
+    nzHasFeedback="false"
+  >
+    <input
+      style="width: 400px"
+      [(ngModel)]="name"
+      nz-input
+      name="name"
+      required
+      placeholder="Input Name"
+    />
+  </nz-form-control>
+  <nz-form-control>
+    <label class="label"> </label>
+    <nz-select
+      style="width: 400px"
+      [(ngModel)]="projectFilter"
+      nzShowSearch
+      nzPlaceHolder="Select a project"
+    >
+      <nz-option nzValue="all" nzLabel="--All--"></nz-option>
+      <nz-option
+        *ngFor="let project of projects"
+        nzValue="{{ project.id }}"
+        nzLabel="{{ project.name }}"
+      ></nz-option>
+    </nz-select>
+  </nz-form-control>
+</div>
+
 <table cellspacing="0" border="0">
   <colgroup width="152"></colgroup>
   <colgroup width="170"></colgroup>
@@ -44,7 +77,7 @@
         bgcolor="#ED7D31"
       >
         <a class="comment-indicator"></a>
-        
+
         <b><font face="Arial" color="#FFFFFF">Required? (M/O)</font></b>
       </td>
       <td
@@ -54,7 +87,7 @@
         bgcolor="#ED7D31"
       >
         <a class="comment-indicator"></a>
-       
+
         <b><font face="Arial" color="#FFFFFF">Apply (Y/N/M)</font></b>
       </td>
       <td
@@ -86,6 +119,7 @@
         <b><font face="Arial" color="#FFFFFF">Note</font></b>
       </td>
     </tr>
+    <!-- 1 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -137,16 +171,36 @@
         align="left"
         valign="top"
       >
-        <font face="Arial">PM se la nguoi dien thong tin</font>
+        <!-- Thay doi -->
+          <textarea
+            [(ngModel)]="obj['1-1']"
+            [disabled]="!roleUser"
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            disabled="!roleUser"
+          >
+        </textarea>
+        {{!roleUser}}
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial">Dien thong tin</font>
+        <!-- Thay doi -->
+        <textarea
+          [(ngModel)]="obj['1-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          
+        ></textarea>
       </td>
     </tr>
+    <!-- 2 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -200,16 +254,31 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['2-1']"
+          name=""
+          [disabled]="!roleUser"
+          id=""
+          cols="30"
+          rows="10"
+          [disabled]="!roleUser"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['2-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 3 -->
     <tr>
       <td
         style="border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -263,25 +332,38 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['3-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          [disabled]="!role"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['3-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 4 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="83"
         align="left"
         valign="top"
-      >
-        <b><font face="Arial">Planning</font></b>
-      </td>
+      ></td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
@@ -324,16 +406,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['4-1']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          [disabled]="!roleUser"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['4-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 5 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -390,27 +486,37 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['5-1']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          [disabled]="!roleUser"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['5-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 6 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="50"
         align="left"
         valign="middle"
-      >
-        <b
-          ><font face="Arial"><br /></font
-        ></b>
-      </td>
+      ></td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
@@ -453,16 +559,30 @@
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['6-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['6-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 7 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -516,16 +636,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['7-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['7-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 8 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -579,16 +713,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['8-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['8-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 9 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -647,7 +795,14 @@
         valign="middle"
         bgcolor="#D9D9D9"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['9-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -655,18 +810,23 @@
         valign="middle"
         bgcolor="#D9D9D9"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['9-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 10 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="52"
         align="left"
         valign="top"
-      >
-        <b><font face="Arial">Monitor and control</font></b>
-      </td>
+      ></td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
@@ -709,16 +869,30 @@
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['10-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['10-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 11 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -774,16 +948,31 @@
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['11-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          [disabled]="!roleUser"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['11-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 12 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -842,16 +1031,30 @@
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['12-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['12-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 13 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -905,16 +1108,30 @@
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['13-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['13-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 14 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -968,16 +1185,30 @@
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['14-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['14-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 15 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1031,24 +1262,31 @@
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['15-1']"
+          [disabled]="!roleUser"
+          name=""
+          
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="bottom"
       >
-        <font face="Arial"
-          >The following are some triggered points to start CAR.<br />• CAR
-          level 5:<br />− Critical sub process outlier<br />− POS of high
-          priority quality objective is lower than 80%<br />• CAR level 3:<br />−
-          Recurring problem/issue or client escalations more than 2 times<br />−
-          Any KPI in MA measured is out of control <br />− Any KPI in MA
-          measured is not met target and in bad trend in 3 last collecting
-          times.</font
-        >
+        <textarea
+          [(ngModel)]="obj['1-1']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 16 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1102,16 +1340,30 @@
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['16-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="middle"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['16-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 17 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1119,11 +1371,7 @@
         align="left"
         valign="middle"
         bgcolor="#D9D9D9"
-      >
-        <b
-          ><font face="Arial"><br /></font
-        ></b>
-      </td>
+      ></td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
@@ -1174,11 +1422,14 @@
         valign="middle"
         bgcolor="#D9D9D9"
       >
-        <font face="Arial"
-          >&lt;Your understanding on the overall security scope&gt;<br />E.g.:
-          keep the payment info at top secure level; protect user data; encrypt
-          the sensitive info at DB and during payment transactions ...</font
-        >
+        <textarea
+          [(ngModel)]="obj['17-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1186,11 +1437,13 @@
         valign="middle"
         bgcolor="#D9D9D9"
       >
-        <font face="Arial"
-          >&lt;Mandatory for Justification in column I whatever you choose
-          option in the column F.&gt;<br />If we don't include it, we need to
-          input reasons why we don't apply security for project</font
-        >
+        <textarea
+          [(ngModel)]="obj['17-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
     <tr>
@@ -1255,7 +1508,14 @@
         valign="middle"
         bgcolor="#D9D9D9"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['17-1']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          [disabled]="!roleUser"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1263,13 +1523,16 @@
         valign="middle"
         bgcolor="#D9D9D9"
       >
-        <font face="Arial"
-          >- Request to revoke access right on HNVN's Environment and Client's
-          Environment<br />- Get confirmation of released member on Project
-          Confidential Agreement<br
-        /></font>
+        <textarea
+          [(ngModel)]="obj['17-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 18 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1321,16 +1584,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['18-1']"
+          name=""
+          [disabled]="!roleUser"
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['18-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 19 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1388,16 +1665,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['19-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['19-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 20 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1453,16 +1744,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['20-1']"
+          name=""
+          [disabled]="!roleUser"
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['20-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 21 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1516,16 +1821,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['21-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['21-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 22 -->
     <tr>
       <td
         style="border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1579,16 +1898,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['22-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['22-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 23 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1641,16 +1974,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['23-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['23-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 24 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1694,16 +2041,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['24-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['24-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 25 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1750,16 +2111,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['25-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['25-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 26 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1806,16 +2181,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['26-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['26-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 27 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1871,16 +2260,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['27-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['27-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 28 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1937,16 +2340,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['28-1']"
+          name=""
+          [disabled]="!roleUser"
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['28-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 29 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -1998,16 +2415,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['29-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['29-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 30 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2061,16 +2492,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['30-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['30-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 31 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2124,16 +2569,29 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['31-1']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['31-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 32 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2189,16 +2647,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['32-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['32-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 33 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2252,16 +2724,30 @@
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['33-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['33-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 34 -->
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2314,18 +2800,32 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['34-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['34-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 35 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2379,20 +2879,31 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['35-1']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['35-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 36-->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2448,20 +2959,32 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['36-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['36-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 37 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2520,20 +3043,32 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['37-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['37-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 38 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2589,20 +3124,32 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['38-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['38-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 38 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2658,20 +3205,32 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['39-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['39-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 40 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2730,20 +3289,32 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['40-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['40-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
+    <!-- 41 -->
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
@@ -2799,19 +3370,40 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['41-1']"
+          [disabled]="!roleUser"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
       >
-        <font face="Arial"><br /></font>
+        <textarea
+          [(ngModel)]="obj['41-2']"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </td>
     </tr>
   </tbody>
 </table>
+<div style="display: flex; justify-content:flex-end ">
+  <button
+    (click)="submit()"
+    style="margin-right:10px"
+    nz-button
+    nzType="primary"
+  >
+    Submit
+  </button>
+</div>

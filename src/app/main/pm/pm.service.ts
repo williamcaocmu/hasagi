@@ -98,4 +98,16 @@ export class PmService {
   approveAuditAPI(data) {
     return this.http.post(`${this.url}all/audit/update`, data);
   }
+
+  getTailor() {
+    return this.http.get(`${this.url}all/tailor/getall`);
+  }
+
+  getDetailTailor(id) {
+    return this.http.get(`${this.url}all/tailor/get/${id}`);
+  }
+
+  postTailor(data) {
+    return this.http.post(`${this.url}all/tailor/add`, data);
+  }
 }

@@ -1,0 +1,48 @@
+<nz-content
+  class="content"
+  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
+>
+  <div style="width: 100%; ">
+    <div style="margin-top:20px; overflow: scroll">
+      <nz-table
+        #nzTable
+        [nzNoResult]="'No Result'"
+        [nzData]="projects"
+        [nzPageSize]="10"
+        [nzLoading]="loadingTable"
+        #filterTable
+      >
+        <thead>
+          <tr>
+            <th>
+              Id
+            </th>
+            <th>Name</th>
+            <th>Project</th>
+
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-data [ngForOf]="nzTable.data">
+            <tr>
+              <td>{{ data.id }}</td>
+              <td>{{ data.name }}</td>
+              <td>{{ data.project }}</td>
+              <td style="width: 150px">
+                <button
+                  (click)="navigateView(data.id)"
+                  nz-button
+                  nzType="primary"
+                  nzGhost
+                >
+                  View
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</nz-content>

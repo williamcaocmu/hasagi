@@ -1,21 +1,21 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { NgZorroAntdModule, NZ_I18N, en_US } from "ng-zorro-antd";
-import { FormsModule } from "@angular/forms";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { registerLocaleData } from "@angular/common";
-import en from "@angular/common/locales/en";
-import { LoginComponent } from "./login/login.component";
-import { MainComponent } from "./main/main.component";
-import { AdminComponent } from "./main/admin/admin.component";
-import { AddNewAccountComponent } from "./main/admin/add-new-account/add-new-account.component";
-import { ImportListAccountComponent } from "./main/admin/import-list-account/import-list-account.component";
-import { ManageAccountComponent } from "./main/admin/manage-account/manage-account.component";
-import { AuthInterceptor } from "./auth-interceptor";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+import { AdminComponent } from './main/admin/admin.component';
+import { AddNewAccountComponent } from './main/admin/add-new-account/add-new-account.component';
+import { ImportListAccountComponent } from './main/admin/import-list-account/import-list-account.component';
+import { ManageAccountComponent } from './main/admin/manage-account/manage-account.component';
+import { AuthInterceptor } from './auth-interceptor';
 import { AuthService } from './login/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminServiceService } from './main/admin/admin-service.service';
@@ -31,8 +31,9 @@ import { AuditPlanListComponent } from './main/pm/audit-plan-list/audit-plan-lis
 import { CreateAuditPlanComponent } from './main/pm/create-audit-plan/create-audit-plan.component';
 import { TypeComponent } from './type/type.component';
 import { PuclicAuditPlanComponent } from './main/pm/puclic-audit-plan/puclic-audit-plan.component';
-registerLocaleData(en);
 
+import { ManageTailorComponent } from './main/pm/manage-tailor/manage-tailor.component';
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ registerLocaleData(en);
     AuditPlanListComponent,
     CreateAuditPlanComponent,
     TypeComponent,
-    PuclicAuditPlanComponent
+    PuclicAuditPlanComponent,
+
+    ManageTailorComponent
   ],
   imports: [
     BrowserModule,
@@ -61,14 +64,18 @@ registerLocaleData(en);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
     AuthGuardService,
     AdminServiceService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, useValue: en_US, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      useValue: en_US,
+      multi: true
+    },
     { provide: NZ_I18N, useValue: en_US }
   ],
   bootstrap: [AppComponent]

@@ -89,6 +89,9 @@ export class CreateAuditPlanComponent implements OnInit {
         if (res['code'] === 1) {
           this.router.navigate(['/main/pm/audit-plans']);
         }
+        else if(res['code'] === 0) {
+          this.noti.show('error', 'Error', res['message'].name[0]);
+        }
       },
       err => console.log('err', err)
     );
@@ -117,6 +120,9 @@ export class CreateAuditPlanComponent implements OnInit {
         if (res['code'] === 1) {
           this.noti.show('success', 'Success', 'Success !!!');
           this.goBack();
+        }
+        else if(res['code'] === 0) {
+          this.noti.show('error', 'Error', res['message'].name[0]);
         }
       },
       err => console.log('error', err)

@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { AdminServiceService } from "../admin-service.service";
-import { NotificationService } from "src/app/services/notification.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { AdminServiceService } from '../admin-service.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: "app-add-new-account",
-  templateUrl: "./add-new-account.component.html",
-  styleUrls: ["./add-new-account.component.css"]
+  selector: 'app-add-new-account',
+  templateUrl: './add-new-account.component.html',
+  styleUrls: ['./add-new-account.component.css']
 })
 export class AddNewAccountComponent implements OnInit {
   constructor(
@@ -15,25 +15,26 @@ export class AddNewAccountComponent implements OnInit {
     private notificationService: NotificationService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private noti: NotificationService
   ) {}
 
   editMode = false;
 
   account = {
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
     role: null,
-    staffid: "",
+    staffid: '',
     status: false
   };
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(param => {
-      if (param["id"]) {
+      if (param['id']) {
         this.editMode = true;
-        this.getAnAccount(param["id"]);
+        this.getAnAccount(param['id']);
       }
     });
   }
@@ -51,37 +52,37 @@ export class AddNewAccountComponent implements OnInit {
       .subscribe(
         res => {
           // console.log(res)
-          if (res["code"] === 1) {
-            this.notificationService.show("success", "Success", "Add Success");
+          if (res['code'] === 1) {
+            this.notificationService.show('success', 'Success', 'Add Success');
           } else {
-            let emailError = res["message"].email;
-            let staffIdError = res["message"].staffid;
+            let emailError = res['message'].email;
+            let staffIdError = res['message'].staffid;
             emailError
               ? this.notificationService.show(
-                  "error",
-                  "Email Error",
-                  `${emailError ? emailError : ""}`
+                  'error',
+                  'Email Error',
+                  `${emailError ? emailError : ''}`
                 )
               : null;
 
             staffIdError
               ? this.notificationService.show(
-                  "error",
-                  "Email Error",
-                  `${staffIdError ? staffIdError : ""}  `
+                  'error',
+                  'Email Error',
+                  `${staffIdError ? staffIdError : ''}  `
                 )
               : null;
           }
         },
-        err => console.log("err", err)
+        err => console.log('err', err)
       );
   }
 
   getAnAccount(id) {
     this.adminService.getAnAccount(id).subscribe(res => {
-      if (res["code"] === 1) {
-        this.account = res["data"];
-        this.account["id"] = id;
+      if (res['code'] === 1) {
+        this.account = res['data'];
+        this.account['id'] = id;
       }
     });
   }
@@ -89,13 +90,15 @@ export class AddNewAccountComponent implements OnInit {
   editAccount() {
     this.adminService.editAccount(this.account).subscribe(res => {
       console.log(res);
-      if (res["code"] === 1) {
-        this.router.navigate(["/main/admin/manage-account"]);
+      if (res['code'] === 1) {
+        this.router.navigate(['/main/admin/manage-account']);
+      } else if (res['code'] === 0) {
+        this.noti.show('error', 'Error', res['message'].name[0]);
       }
     });
   }
 
-  navigate(){
-    this.location.back()
+  navigate() {
+    this.location.back();
   }
 }
