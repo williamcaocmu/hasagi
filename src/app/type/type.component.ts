@@ -62,7 +62,7 @@ export class TypeComponent implements OnInit {
           this.obj = res['data'].content;
           this.name = res['data'].name;
           this.projectFilter = res['data'].project;
-          this.roleUser = Boolean(res['role']);
+          this.roleUser = res['role'] === 'true' ? true : false;
         }
       },
       err => console.log('err')
@@ -79,7 +79,7 @@ export class TypeComponent implements OnInit {
       res => {
         if (res['code'] === 1) {
           this.obj = res['data'];
-        } else if(res['code'] === 0) {
+        } else if (res['code'] === 0) {
           this.noti.show('error', 'Error', res['message'].name[0]);
         }
       },
