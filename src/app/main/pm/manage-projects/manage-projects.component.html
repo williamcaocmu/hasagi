@@ -11,21 +11,20 @@
       <nz-table
         #nzTable
         [nzNoResult]="'No Result'"
-        [nzData]="projects"
+        [nzData]="displayData"
         [nzPageSize]="10"
         [nzLoading]="loadingTable"
-        #filterTable
       >
-        <thead>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
           <tr>
-            <th>
+            <th nzShowSort nzSortKey="name">
               Project Name
             </th>
-            <th>Description</th>
-            <th>Role</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>PM Name</th>
+            <th nzShowSort="true" nzSortKey="description">Description</th>
+            <th nzShowSort="true" nzSortKey="role">Role</th>
+            <th nzShowSort="true" nzSortKey="start">Start Date</th>
+            <th nzShowSort="true" nzSortKey="end">End Date</th>
+            <th nzShowSort="true" nzSortKey="role">PM Name</th>
             <th>Status</th>
             <th></th>
           </tr>
@@ -34,13 +33,13 @@
           <ng-template ngFor let-data [ngForOf]="nzTable.data">
             <tr>
               <td style="width: 150px">{{ data.name }}</td>
-              <td class="width150">{{data.description }}</td>
+              <td class="width150">{{ data.description }}</td>
               <td class="width150">{{ data.role }}</td>
               <td style="width: 150px">{{ data.start }}</td>
               <td style="width: 150px">{{ data.end }}</td>
               <td style="width: 150px">{{ data.role }}</td>
               <td style="width: 150px">
-                {{ data.status ? "Active" : "Deactive" }}
+                {{ data.status ? 'Active' : 'Deactive' }}
               </td>
               <td style="width: 150px">
                 <button

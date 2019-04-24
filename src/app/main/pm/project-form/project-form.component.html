@@ -4,7 +4,7 @@
 >
   <div style="width: 90%">
     <h1 style="text-transform: uppercase">
-      {{ editMode ? "Edit" : "Create" }} Project
+      {{ editMode ? 'Edit' : 'Create' }} Project
     </h1>
     <div style="margin-top:20px">
       <form #projectForm="ngForm">
@@ -71,13 +71,11 @@
             ></nz-range-picker>
           </nz-form-control>
           <!-- {{rangeDate}} -->
-          <nz-form-control *ngIf="project?.role === 'admin' || me?.role === 'admin' " >
+          <nz-form-control
+            *ngIf="project?.role === 'admin' || me?.role === 'admin'"
+          >
             <label class="label"> PM</label>
-            <nz-select
-              name="qam"
-              style="width: 100%;"
-              [(ngModel)]="selectedPM"
-            >
+            <nz-select name="qam" style="width: 100%;" [(ngModel)]="selectedPM">
               <nz-option
                 *ngFor="let item of pmList"
                 nzValue="{{ item.id }}"
@@ -86,7 +84,7 @@
               </nz-option>
             </nz-select>
           </nz-form-control>
-          <nz-form-control *ngIf="project?.role === 'pm'" >
+          <nz-form-control *ngIf="project?.role === 'pm'">
             <label class="label"> QAM</label>
             <nz-select
               name="qam"
@@ -101,7 +99,7 @@
               </nz-option>
             </nz-select>
           </nz-form-control>
-          <nz-form-control *ngIf="project?.role === 'pm'" >
+          <nz-form-control *ngIf="project?.role === 'pm'">
             <label class="label"> QAO</label>
             <nz-select
               name="qao"
@@ -127,12 +125,12 @@
             </div>
             <div class="right">
               <button
-                (click)=" editMode? updateProject() : createProject()"
+                (click)="editMode ? updateProject() : createProject()"
                 style="margin-right:10px"
                 nz-button
                 nzType="primary"
               >
-                {{ editMode ? "Edit" : "Create" }}
+                {{ editMode ? 'Edit' : 'Create' }}
               </button>
               <button
                 (click)="resetForm(projectForm)"

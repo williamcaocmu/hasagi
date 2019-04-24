@@ -29,21 +29,21 @@
       <nz-table
         #nzTable
         [nzNoResult]="'No Result'"
-        [nzData]="filterPlan"
+        [nzData]="displayData"
         [nzPageSize]="25"
         [nzLoading]="loadingTable"
         #filterTable
       >
-        <thead>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
           <tr>
-            <th nzCustomFilter>
+            <th nzShowSort nzSortKey="index">
               STT
             </th>
-            <th>Audit Name</th>
-            <th>Description</th>
-            <th>Owner</th>
-            <th>Created_at</th>
-            <th>Project</th>
+            <th nzShowSort nzSortKey="name">Audit Name</th>
+            <th nzShowSort nzSortKey="description">Description</th>
+            <th nzShowSort nzSortKey="owner">Owner</th>
+            <th nzShowSort nzSortKey="created_at">Created_at</th>
+            <th nzShowSort nzSortKey="project">Project</th>
             <th>Edit</th>
           </tr>
         </thead>

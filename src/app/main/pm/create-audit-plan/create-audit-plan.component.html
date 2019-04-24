@@ -105,13 +105,13 @@
               nzHasFeedback="false"
             >
               <label class="label">Question {{ i + 1 }} </label>
-              <input
+              <textarea
                 [disabled]="!permission.form"
                 nz-input
                 name="question{{ i }}"
                 required
                 [(ngModel)]="questions[i].question"
-              />
+              ></textarea>
             </nz-form-control>
 
             <nz-form-control style="margin-top:10px">

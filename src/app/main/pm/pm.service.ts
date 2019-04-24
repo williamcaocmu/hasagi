@@ -108,6 +108,10 @@ export class PmService {
   }
 
   postTailor(data) {
+    return this.http.post(`${this.url}all/tailor/update`, data);
+  }
+
+  editTailor(data) {
     return this.http.post(`${this.url}all/tailor/add`, data);
   }
 }

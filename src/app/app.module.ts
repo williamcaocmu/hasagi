@@ -33,6 +33,7 @@ import { TypeComponent } from './type/type.component';
 import { PuclicAuditPlanComponent } from './main/pm/puclic-audit-plan/puclic-audit-plan.component';
 
 import { ManageTailorComponent } from './main/pm/manage-tailor/manage-tailor.component';
+import { TailorFormAddComponent } from './main/pm/tailor-form-add/tailor-form-add.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -56,7 +57,9 @@ registerLocaleData(en);
     TypeComponent,
     PuclicAuditPlanComponent,
 
-    ManageTailorComponent
+    ManageTailorComponent,
+
+    TailorFormAddComponent
   ],
   imports: [
     BrowserModule,

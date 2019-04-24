@@ -40,7 +40,6 @@
           <nz-dropdown [nzTrigger]="'click'">
             <a nz-dropdown> {{ me?.name }} <i nz-icon type="down"></i> </a>
             <ul nz-menu>
-              <li nz-menu-item>1st menu item</li>
               <li nz-menu-item (click)="logout()">
                 Logout
               </li>
@@ -101,15 +100,6 @@
         >
           <a [routerLink]="['/main/pm/manage-projects/view/public-document']">
             <span title><i nz-icon type="user"></i> Public Documents</span>
-          </a>
-        </li>
-        <li
-          *ngIf="me?.role === 'admin'"
-          nz-menu-item
-          routerLinkActive="ant-menu-item-selected"
-        >
-          <a [routerLink]="['/main/admin/manage-projects/add']">
-            <span title><i nz-icon type="user"></i> Create Project</span>
           </a>
         </li>
         <li

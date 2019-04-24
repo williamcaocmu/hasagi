@@ -6,15 +6,15 @@
     <nz-table
       #nzTable
       [nzNoResult]="'No Result'"
-      [nzData]="accounts"
+      [nzData]="displayData"
       [nzPageSize]="10"
       [nzLoading]="loadingTable"
     >
-      <thead>
+      <thead (nzSortChange)="sort($event)" nzSingleSort>
         <tr>
-          <th>Username</th>
-          <th>Date registed</th>
-          <th>Role</th>
+          <th nzShowSort nzSortKey="name">Username</th>
+          <th nzShowSort nzSortKey="email">Email</th>
+          <th nzShowSort nzSortKey="role">Role</th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -26,7 +26,7 @@
             <td style="width: 240px">{{ data.email }}</td>
             <td style="width: 240px">{{ data.role }}</td>
             <td style="width: 240px">
-              {{ data.status ? "Active" : "Deactive" }}
+              {{ data.status ? 'Active' : 'Deactive' }}
             </td>
             <td style="width: 240px">
               <button

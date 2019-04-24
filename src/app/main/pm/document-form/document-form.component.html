@@ -4,7 +4,7 @@
 >
   <div style="width: 90%">
     <h1 style="text-transform: uppercase">
-      {{ editMode ? "Edit" : "Create" }} Document
+      {{ editMode ? 'Edit' : 'Create' }} Document
     </h1>
     <div style="margin-top:20px">
       <form #projectForm="ngForm">
@@ -15,8 +15,8 @@
             nzHasFeedback="false"
           >
             <label class="label">Document Name</label>
-           
-            <input  [(ngModel)]="document.name"  nz-input name="name" required />
+
+            <input [(ngModel)]="document.name" nz-input name="name" required />
           </nz-form-control>
           <nz-form-control
             style="margin-top:10px"
@@ -24,23 +24,40 @@
             nzHasFeedback="false"
           >
             <label class="label"> Description</label>
-            <input [(ngModel)]="document.description" nz-input name="description" required />
+            <input
+              [(ngModel)]="document.description"
+              nz-input
+              name="description"
+              required
+            />
           </nz-form-control>
           <nz-form-control>
             <label class="label"> Document Type</label>
-            <nz-select [(ngModel)]="document.type" name="projectType" style="width: 100%;" nzLoading>
+            <nz-select
+              [(ngModel)]="document.type"
+              name="projectType"
+              style="width: 100%;"
+              nzLoading
+            >
               <nz-option
                 nzValue="process template"
                 nzLabel="Process Template"
               ></nz-option>
               <nz-option nzValue="checklist" nzLabel="Checklist"></nz-option>
               <nz-option nzValue="standard" nzLabel="Standard"></nz-option>
-              <nz-option nzValue="best practice" nzLabel="Best Practice"></nz-option>
+              <nz-option
+                nzValue="best practice"
+                nzLabel="Best Practice"
+              ></nz-option>
             </nz-select>
           </nz-form-control>
           <nz-form-control>
             <label class="label"> Reviewer</label>
-            <nz-select [(ngModel)]="document.reviewer" name="qam" style="width: 100%;">
+            <nz-select
+              [(ngModel)]="document.reviewer"
+              name="qam"
+              style="width: 100%;"
+            >
               <nz-option
                 *ngFor="let item of reviewers"
                 nzValue="{{ item.id }}"
@@ -52,13 +69,13 @@
           <nz-form-control>
             <label class="label"> File</label>
             <div>
-                <nz-upload
+              <nz-upload
                 [nzLimit]="0"
                 [(nzFileList)]="fileList"
                 [nzBeforeUpload]="beforeUpload"
               >
                 <button nz-button>
-                  <i nz-icon type="upload"></i><span>Select   </span>
+                  <i nz-icon type="upload"></i><span>Select </span>
                 </button>
               </nz-upload>
               <button
@@ -67,9 +84,9 @@
                 [nzLoading]="uploading"
                 (click)="handleUpload()"
                 [disabled]="fileList.length == 0"
-                style="margin-top: 16px"
+                style="margin-top: 16px; display: none"
               >
-                {{ uploading ? "Uploading" : "Start Upload" }}
+                {{ uploading ? 'Uploading' : 'Start Upload' }}
               </button>
             </div>
           </nz-form-control>
@@ -77,7 +94,12 @@
             style="margin-top: 25px; display: flex; justify-content: space-between"
           >
             <div class="left">
-              <button (click)="goBack()" nz-button nzType="default" [nzLoading]="uploading">
+              <button
+                (click)="goBack()"
+                nz-button
+                nzType="default"
+                [nzLoading]="uploading"
+              >
                 <i nz-icon type="left"></i> Back
               </button>
             </div>
@@ -89,7 +111,7 @@
                 nzType="primary"
                 [nzLoading]="uploading"
               >
-                {{ editMode ? "Edit" : "Create" }}
+                {{ editMode ? 'Edit' : 'Create' }}
               </button>
               <button
                 (click)="resetForm(projectForm)"

@@ -21,7 +21,7 @@
         [disabled]="fileList.length == 0"
         style="margin-left: 10px"
       >
-        {{ uploading ? "Uploading" : "Import" }}
+        {{ uploading ? 'Uploading' : 'Import' }}
       </button>
       <div style="margin-top:20px">
         <nz-alert
@@ -39,15 +39,15 @@
     <nz-table
       #nzTable
       [nzNoResult]="'No Result'"
-      [nzData]="accounts"
+      [nzData]="displayData"
       [nzPageSize]="10"
       [nzLoading]="loadingTable"
     >
-      <thead>
+      <thead (nzSortChange)="sort($event)" nzSingleSort>
         <tr>
-          <th>Username</th>
-          <th>Date registed</th>
-          <th>Role</th>
+          <th nzShowSort nzSortKey="name">Username</th>
+          <th nzShowSort nzSortKey="email">Email</th>
+          <th nzShowSort nzSortKey="role">Role</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -58,7 +58,7 @@
             <td style="width: 240px">{{ data.email }}</td>
             <td style="width: 240px">{{ data.role }}</td>
             <td style="width: 240px">
-              {{ data.status ? "Active" : "Deactive" }}
+              {{ data.status ? 'Active' : 'Deactive' }}
             </td>
           </tr>
         </ng-template>

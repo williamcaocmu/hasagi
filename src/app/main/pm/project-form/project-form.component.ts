@@ -1,22 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
-import { NgForm } from "@angular/forms";
-import { PmService } from "../pm.service";
-import * as format from "date-fns";
-import { AuthService } from "src/app/login/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { NgForm } from '@angular/forms';
+import { PmService } from '../pm.service';
+import * as format from 'date-fns';
+import { AuthService } from 'src/app/login/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
-  selector: "app-project-form",
-  templateUrl: "./project-form.component.html",
-  styleUrls: ["./project-form.component.css"]
+  selector: 'app-project-form',
+  templateUrl: './project-form.component.html',
+  styleUrls: ['./project-form.component.css']
 })
 export class ProjectFormComponent implements OnInit {
   editMode = false;
-  selectedQAM = "";
+  selectedQAM = '';
   selectedQAO = [];
-  selectedPM = "";
+  selectedPM = '';
 
   listOfOption = [];
   rangeDate = [];
@@ -24,15 +24,15 @@ export class ProjectFormComponent implements OnInit {
   qaoList = [];
   pmList = [];
   project = {
-    name: "",
-    description: "",
-    type: "",
+    name: '',
+    description: '',
+    type: '',
     qam: {},
     qao: [],
     start: null,
     end: null,
-    pm: "",
-    role: ""
+    pm: '',
+    role: ''
   };
 
   me;
@@ -50,11 +50,11 @@ export class ProjectFormComponent implements OnInit {
     await this.getAuth();
     await this.getQA();
     this.activatedRoute.params.subscribe(param => {
-      if (param["id"]) {
+      if (param['id']) {
+        console.log(param['id']);
         this.editMode = true;
-        this.getDetail(param["id"]);
+        this.getDetail(param['id']);
       }
-
     });
   }
 
@@ -63,36 +63,38 @@ export class ProjectFormComponent implements OnInit {
       res => {
         this.me = res;
       },
-      err => console.log("err", err)
+      err => console.log('err', err)
     );
   }
 
   getDetail(id) {
     this.pmService.getDetailProject(id).subscribe(
       res => {
-        if (res["code"] === 1) {
-          this.project.role = res["data"]["project"]["role"];
-          if (this.project.role === "admin") {
-            this.selectedPM = res["data"].pm[0].id;
+        if (res['code'] === 1) {
+          this.project.role = res['data']['project']['role'];
+          if (this.project.role === 'admin') {
+            this.selectedPM = res['data'].pm[0].id;
           }
-          if (this.project.role === "pm") {
-            this.selectedQAM = res["data"].qam[0].id;
-            let data = res["data"].qao.map(item => {
+          if (this.project.role === 'pm') {
+            this.selectedQAM = res['data'].qam[0].id;
+            let data = res['data'].qao.map(item => {
               return item.id;
             });
             this.selectedQAO = data;
-            console.log(res['data'])
-            this.project.qam = res["data"].project.qam && res["data"].project.qam[0] && res["data"].project.qam[0].id
-            this.project.qao = res["data"].project.qao.map(item => item.id);
+            console.log(res['data']);
+            this.project.qam =
+              res['data'].project.qam &&
+              res['data'].project.qam[0] &&
+              res['data'].project.qam[0].id;
+            this.project.qao = res['data'].project.qao.map(item => item.id);
             this.selectedQAM = this.project.qam as any;
             this.selectedQAO = this.project.qao;
-
           }
-          this.project = res["data"].project;
-          this.rangeDate = [res["data"].project.start, res["data"].project.end];
+          this.project = res['data'].project;
+          this.rangeDate = [res['data'].project.start, res['data'].project.end];
         }
       },
-      err => console.log("err", err)
+      err => console.log('err', err)
     );
   }
 
@@ -102,28 +104,26 @@ export class ProjectFormComponent implements OnInit {
     this.project.pm = this.selectedPM;
     this.pmService.createProjectApi(this.project).subscribe(
       res => {
-        if (res["code"] === 1) {
-          this.router.navigate(["/main/pm/manage-projects"]);
-        }
-        else if(res['code'] === 0) {
-          this.noti.show('error', 'Error', res['message'].name[0]);
+        if (res['code'] === 1) {
+          this.router.navigate(['/main/pm/manage-projects']);
+        } else if (res['code'] === 0) {
+          this.noti.show('error', 'Error', 'Action Fail !!');
         }
       },
-      err => console.log("err", err)
+      err => console.log('err', err)
     );
   }
 
   updateProject() {
-    console.log("dsadsads");
-    if (this.project.role === "admin") {
+    console.log('dsadsads');
+    if (this.project.role === 'admin') {
       this.project.pm = this.selectedPM;
       this.pmService.updateProjectApi(this.project).subscribe(
         res => {
-          if (res["code"] === 1) {
-            this.router.navigate(["/main/pm/manage-projects"]);
-          }
-          else if(res['code'] === 0) {
-            this.noti.show('error', 'Error', res['message'].name[0]);
+          if (res['code'] === 1) {
+            this.router.navigate(['/main/pm/manage-projects']);
+          } else if (res['code'] === 0) {
+            this.noti.show('error', 'Error', 'Action Fail !!');
           }
         },
         err => {
@@ -131,13 +131,13 @@ export class ProjectFormComponent implements OnInit {
         }
       );
     }
-    if (this.project.role === "pm") {
+    if (this.project.role === 'pm') {
       this.project.qam = this.selectedQAM;
       this.project.qao = this.selectedQAO;
       this.pmService.updateProjectPMApi(this.project).subscribe(
         res => {
-          if (res["code"] === 1) {
-            this.router.navigate(["/main/pm/manage-projects"]);
+          if (res['code'] === 1) {
+            this.router.navigate(['/main/pm/manage-projects']);
           }
         },
         err => {
@@ -151,13 +151,13 @@ export class ProjectFormComponent implements OnInit {
   getQA() {
     this.pmService.getAccInfo().subscribe(
       res => {
-        if (res["code"] === 1) {
-          this.pmList = res["data"]["pm"];
-          this.qaoList = res["data"]["qao"];
-          this.qamList = res["data"]["qam"];
+        if (res['code'] === 1) {
+          this.pmList = res['data']['pm'];
+          this.qaoList = res['data']['qao'];
+          this.qamList = res['data']['qam'];
         }
       },
-      err => console.log("err", err)
+      err => console.log('err', err)
     );
   }
 
@@ -166,8 +166,8 @@ export class ProjectFormComponent implements OnInit {
   }
 
   onChange(result: Date[]): void {
-    this.project.start = format.format(result[0], "MM/DD/YYYY");
-    this.project.end = format.format(result[1], "MM/DD/YYYY");
+    this.project.start = format.format(result[0], 'MM/DD/YYYY');
+    this.project.end = format.format(result[1], 'MM/DD/YYYY');
   }
 
   resetForm(projectForm: NgForm) {

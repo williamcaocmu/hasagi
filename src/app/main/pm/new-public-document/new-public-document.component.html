@@ -7,19 +7,19 @@
       <nz-table
         #nzTable
         [nzNoResult]="'No Result'"
-        [nzData]="documents"
+        [nzData]="displayData"
         [nzPageSize]="25"
         [nzLoading]="loadingTable"
         #filterTable
       >
-        <thead>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
           <tr>
-            <th nzCustomFilter>
+            <th nzShowSort nzSortKey="name">
               Project Name
             </th>
-            <th>Description</th>
-            <th>Version</th>
-            <th>Type</th>
+            <th nzShowSort nzSortKey="description">Description</th>
+            <th nzShowSort nzSortKey="version">Version</th>
+            <th nzShowSort nzSortKey="type">Type</th>
             <th>Status</th>
             <th>File</th>
           </tr>

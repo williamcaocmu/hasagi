@@ -13,6 +13,9 @@ export class AuditPlanListComponent implements OnInit {
   projects = [];
   projectFilter = null;
   filterPlan = [];
+  sortValue = null;
+  sortName = null;
+  displayData = [];
 
   ngOnInit() {
     this.getAll();
@@ -36,6 +39,30 @@ export class AuditPlanListComponent implements OnInit {
     );
   }
 
+  sort(sort: { key: string; value: string }): void {
+    this.sortName = sort.key;
+    this.sortValue = sort.value;
+    this.search1();
+  }
+
+  search1(): void {
+    /** sort data **/
+    const data = [...this.filterPlan];
+    if (this.sortName && this.sortValue) {
+      this.displayData = data.sort((a, b) =>
+        this.sortValue === 'ascend'
+          ? a[this.sortName!] > b[this.sortName!]
+            ? 1
+            : -1
+          : b[this.sortName!] > a[this.sortName!]
+          ? 1
+          : -1
+      );
+    } else {
+      this.displayData = data;
+    }
+  }
+
   getListAuditPlan() {
     this.pmService.getListAuditPlan().subscribe(
       res => {
@@ -43,6 +70,7 @@ export class AuditPlanListComponent implements OnInit {
           this.auditPlan = res['data'];
           this.auditPlan.map((item, i) => (item.index = i));
           this.filterPlan = [...this.auditPlan];
+          this.displayData = [...this.filterPlan];
         }
       },
       err => {

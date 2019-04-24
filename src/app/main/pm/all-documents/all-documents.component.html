@@ -36,19 +36,18 @@
       <nz-table
         #nzTable
         [nzNoResult]="'No Result'"
-        [nzData]="documents"
+        [nzData]="displayData"
         [nzPageSize]="25"
         [nzLoading]="loadingTable"
-        #filterTable
       >
-        <thead>
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
           <tr>
-            <th nzCustomFilter>
+            <th nzShowSort nzSortKey="name">
               Project Name
             </th>
             <th>Type</th>
             <th>Status</th>
-            <th>Role</th>
+            <th nzShowSort nzSortKey="role">Role</th>
 
             <th></th>
           </tr>

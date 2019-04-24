@@ -14,7 +14,7 @@ export class TypeComponent implements OnInit {
   name = '';
   array = new Array(42);
   roleUser;
-
+  id;
   constructor(
     private pmService: PmService,
     private activatedRoute: ActivatedRoute,
@@ -37,7 +37,9 @@ export class TypeComponent implements OnInit {
 
   async ngOnInit() {
     await this.activatedRoute.params.subscribe(param => {
+      this.id = param['id'];
       this.getTailor(param['id']);
+      this.eidtMode = true;
     });
     this.getAll();
   }
@@ -73,17 +75,18 @@ export class TypeComponent implements OnInit {
     let data = {
       name: this.name,
       content: this.obj,
-      project: this.projectFilter
+      project: this.projectFilter,
+      id: this.id
     };
     this.pmService.postTailor(data).subscribe(
       res => {
         if (res['code'] === 1) {
           this.obj = res['data'];
         } else if (res['code'] === 0) {
-          this.noti.show('error', 'Error', res['message'].name[0]);
+          this.noti.show('error', 'Error', 'Action Fail !!');
         }
       },
-      err => this.noti.show('error', 'Error', err)
+      err => this.noti.show('error', 'Error', 'Action Fail !!')
     );
   }
 }

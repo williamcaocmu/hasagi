@@ -20,6 +20,7 @@ import { CreateAuditPlanComponent } from './main/pm/create-audit-plan/create-aud
 import { TypeComponent } from './type/type.component';
 import { PuclicAuditPlanComponent } from './main/pm/puclic-audit-plan/puclic-audit-plan.component';
 import { ManageTailorComponent } from './main/pm/manage-tailor/manage-tailor.component';
+import { TailorFormAddComponent } from './main/pm/tailor-form-add/tailor-form-add.component';
 // import { ListTailorComponent } from './list-tailor/list-tailor.component';
 
 const routes: Routes = [
@@ -96,6 +97,11 @@ const routes: Routes = [
             canActivate: [AuthGuardService]
           },
           {
+            path: 'manage-projects/add',
+            component: ProjectFormComponent,
+            canActivate: [AuthGuardService]
+          },
+          {
             path: 'manage-projects/:id',
             component: ProjectFormComponent,
             canActivate: [AuthGuardService]
@@ -125,6 +131,11 @@ const routes: Routes = [
           {
             path: 'audit-plans/:id',
             component: CreateAuditPlanComponent,
+            canActivate: [AuthGuardService]
+          },
+          {
+            path: 'type/add',
+            component: TailorFormAddComponent,
             canActivate: [AuthGuardService]
           },
           {
