@@ -52,6 +52,7 @@
                   Edit
                 </button>
                 <button
+                  [hidden]="data.role === 'admin'"
                   (click)="navigateView(data.id)"
                   nz-button
                   nzType="primary"
