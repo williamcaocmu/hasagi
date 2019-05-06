@@ -41,13 +41,12 @@ export class AuditPlanListComponent implements OnInit {
 
   handleStatus(status) {
     switch (status) {
-      case 1:
+      case '0':
         return `Wait PM, QAM Approve`;
-
-      case 2:
+      case '1':
         return `Wait PM Approve`;
       default:
-        return 'Published';
+        return status;
         break;
     }
   }
