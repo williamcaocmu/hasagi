@@ -97,7 +97,7 @@ const routes: Routes = [
             canActivate: [AuthGuardService]
           },
           {
-            path: 'manage-projects/add',
+            path: 'manage-projects/add  ',
             component: ProjectFormComponent,
             canActivate: [AuthGuardService]
           },

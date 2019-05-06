@@ -3,6 +3,7 @@ import { NzMessageService, UploadFile } from 'ng-zorro-antd';
 import { PmService } from '../pm.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-document-form',
@@ -29,7 +30,8 @@ export class DocumentFormComponent implements OnInit {
   constructor(
     private pmService: PmService,
     private activatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private noti: NotificationService
   ) {
     this.activatedRoute.params.subscribe(param => {
       this.id = param['id'];
@@ -52,7 +54,9 @@ export class DocumentFormComponent implements OnInit {
   async createDocument() {
     try {
       await this.handleUpload();
-    } catch (error) {}
+    } catch (error) {
+      this.noti.show('error', 'Error', 'Action Fail !!');
+    }
   }
 
   beforeUpload = (file: UploadFile): boolean => {
@@ -64,7 +68,6 @@ export class DocumentFormComponent implements OnInit {
     this.uploading = true;
     this.pmService.postFile(this.fileList[0]).subscribe(
       res => {
-        console.log('res', res);
         if (res['code'] == 1) {
           this.document.fileupload = res['data'];
           this.uploading = false;
@@ -74,13 +77,19 @@ export class DocumentFormComponent implements OnInit {
               this.goBack();
             },
             err => {
-              console.log('err', err);
+              console.log('err1', err);
+              this.uploading = false;
+              this.noti.show('error', 'Error', 'Action Fail !!');
             }
           );
+        } else {
+          this.noti.show('error', 'Error', 'Action Fail !!');
+          this.uploading = false;
         }
       },
       err => {
-        console.log('err', err);
+        console.log('err2');
+        this.noti.show('error', 'Error', 'Action Fail !!');
         this.uploading = false;
       }
     );

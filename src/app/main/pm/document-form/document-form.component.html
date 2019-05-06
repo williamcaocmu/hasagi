@@ -94,12 +94,7 @@
             style="margin-top: 25px; display: flex; justify-content: space-between"
           >
             <div class="left">
-              <button
-                (click)="goBack()"
-                nz-button
-                nzType="default"
-                [nzLoading]="uploading"
-              >
+              <button (click)="goBack()" nz-button nzType="default">
                 <i nz-icon type="left"></i> Back
               </button>
             </div>
@@ -109,7 +104,6 @@
                 style="margin-right:10px"
                 nz-button
                 nzType="primary"
-                [nzLoading]="uploading"
               >
                 {{ editMode ? 'Edit' : 'Create' }}
               </button>
@@ -117,7 +111,7 @@
                 (click)="resetForm(projectForm)"
                 nz-button
                 nzType="default"
-                [nzLoading]="uploading"
+                *ngIf="false"
               >
                 Reset
               </button>

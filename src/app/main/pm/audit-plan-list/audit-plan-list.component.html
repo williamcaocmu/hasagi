@@ -44,6 +44,8 @@
             <th nzShowSort nzSortKey="owner">Owner</th>
             <th nzShowSort nzSortKey="created_at">Created_at</th>
             <th nzShowSort nzSortKey="project">Project</th>
+            <th nzShowSort nzSortKey="status">Status</th>
+
             <th>Edit</th>
           </tr>
         </thead>
@@ -55,8 +57,12 @@
               <td>{{ data.description }}</td>
               <td>{{ data.owner }}</td>
               <td>{{ data.created_at }}</td>
+
               <td>
                 {{ data.project }}
+              </td>
+              <td>
+                {{ handleStatus(data.status) }}
               </td>
               <td>
                 <button

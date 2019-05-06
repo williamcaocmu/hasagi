@@ -39,6 +39,19 @@ export class AuditPlanListComponent implements OnInit {
     );
   }
 
+  handleStatus(status) {
+    switch (status) {
+      case 1:
+        return `Wait PM, QAM Approve`;
+
+      case 2:
+        return `Wait PM Approve`;
+      default:
+        return 'Published';
+        break;
+    }
+  }
+
   sort(sort: { key: string; value: string }): void {
     this.sortName = sort.key;
     this.sortValue = sort.value;

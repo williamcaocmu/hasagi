@@ -115,7 +115,6 @@ export class ProjectFormComponent implements OnInit {
   }
 
   updateProject() {
-    console.log('dsadsads');
     if (this.project.role === 'admin') {
       this.project.pm = this.selectedPM;
       this.pmService.updateProjectApi(this.project).subscribe(
@@ -134,6 +133,7 @@ export class ProjectFormComponent implements OnInit {
     if (this.project.role === 'pm') {
       this.project.qam = this.selectedQAM;
       this.project.qao = this.selectedQAO;
+      console.log('pm ', this.project)
       this.pmService.updateProjectPMApi(this.project).subscribe(
         res => {
           if (res['code'] === 1) {
