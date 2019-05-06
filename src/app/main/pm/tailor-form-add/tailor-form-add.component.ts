@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PmService } from '../pm.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tailor-form-add',
@@ -14,7 +15,11 @@ export class TailorFormAddComponent implements OnInit {
   projectFilter = null;
   projects = [];
 
-  constructor(private pmService: PmService, private noti: NotificationService) {
+  constructor(
+    private pmService: PmService,
+    private noti: NotificationService,
+    private router: Router
+  ) {
     this.obj = this.createObject();
   }
 
@@ -47,11 +52,13 @@ export class TailorFormAddComponent implements OnInit {
       content: this.obj,
       project: this.projectFilter
     };
-    console.log(this.obj);
-    this.pmService.editTailor(this.obj).subscribe(
+    console.log(data);
+
+    this.pmService.editTailor(data).subscribe(
       res => {
         if (res['code'] === 1) {
           this.obj = res['data'];
+          this.router.navigate(['./main/pm/type']);
         } else if (res['code'] === 0) {
           this.noti.show('error', 'Error', 'Action Fail !!');
         }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PmService } from '../main/pm/pm.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from '../services/notification.service';
 
 @Component({
@@ -18,7 +18,8 @@ export class TypeComponent implements OnInit {
   constructor(
     private pmService: PmService,
     private activatedRoute: ActivatedRoute,
-    private noti: NotificationService
+    private noti: NotificationService,
+    private router: Router
   ) {
     this.obj = this.createObject();
   }
@@ -82,6 +83,7 @@ export class TypeComponent implements OnInit {
       res => {
         if (res['code'] === 1) {
           this.obj = res['data'];
+          this.router.navigate(['main/pm/type'] );
         } else if (res['code'] === 0) {
           this.noti.show('error', 'Error', 'Action Fail !!');
         }
