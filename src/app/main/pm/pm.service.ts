@@ -114,4 +114,12 @@ export class PmService {
   editTailor(data) {
     return this.http.post(`${this.url}all/tailor/add`, data);
   }
+
+  getProjectInAuditPlan() {
+    return this.http.get(`${this.url}all/audit/getproject`);
+  }
+
+  getProjectInTailor() {
+    return this.http.get(`${this.url}all/tailor/getproject`);
+  }
 }

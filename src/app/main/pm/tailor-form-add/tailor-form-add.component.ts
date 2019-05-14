@@ -24,7 +24,7 @@ export class TailorFormAddComponent implements OnInit {
   }
 
   getAll() {
-    this.pmService.getAllProjects().subscribe(
+    this.pmService.getProjectInTailor().subscribe(
       res => {
         if (res['code'] === 1) {
           this.projects = res['data'];

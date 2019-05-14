@@ -25,7 +25,7 @@
             <th nzShowSort="true" nzSortKey="start">Start Date</th>
             <th nzShowSort="true" nzSortKey="end">End Date</th>
             <th nzShowSort="true" nzSortKey="role">PM Name</th>
-            
+
             <th></th>
           </tr>
         </thead>
@@ -37,8 +37,8 @@
               <td class="width150">{{ data.role }}</td>
               <td style="width: 150px">{{ data.start }}</td>
               <td style="width: 150px">{{ data.end }}</td>
-              <td style="width: 150px">{{ data.role }}</td>
-             
+              <td style="width: 150px">{{ data.pmname[0].name }}</td>
+
               <td style="width: 150px">
                 <button
                   [hidden]="data.role !== 'admin' && data.role !== 'pm'"
@@ -46,7 +46,6 @@
                   nz-button
                   nzType="primary"
                   nzGhost
-                  
                 >
                   Edit
                 </button>

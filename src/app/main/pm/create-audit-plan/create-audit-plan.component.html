@@ -179,6 +179,7 @@
                 {{ editMode ? 'Edit' : 'Create' }}
               </button>
               <button
+                style="margin-right: 10px"
                 nz-button
                 nzType="default"
                 [nzLoading]="uploading"
@@ -194,7 +195,7 @@
                 (click)="sendAction(0)"
                 *ngIf="permission.approve && editMode"
               >
-                Discard
+                Reject
               </button>
             </div>
           </div>

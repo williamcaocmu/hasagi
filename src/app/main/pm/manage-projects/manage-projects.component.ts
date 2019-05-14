@@ -56,6 +56,8 @@ export class ManageProjectsComponent implements OnInit {
     );
   }
 
+  
+
   sort(sort: { key: string; value: string }): void {
     this.sortName = sort.key;
     this.sortValue = sort.value;

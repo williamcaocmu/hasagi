@@ -61,6 +61,23 @@ export class AllDocumentsComponent implements OnInit {
     }
   }
 
+  handleStatus(status) {
+    switch (status) {
+      case '1':
+        return `waiting Reviewer`;
+      case '2':
+        return `on going`;
+      case '3':
+        return `waiting Reviewer`;
+      case '4':
+        return `waiting QAM`;
+      case '5':
+        return `redo document`;
+      default:
+        return status;
+    }
+  }
+
   getAllProjects() {
     this.pmService.getAllProjects().subscribe(
       res => {

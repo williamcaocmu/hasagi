@@ -53,7 +53,7 @@ export class AddNewAccountComponent implements OnInit {
         res => {
           // console.log(res)
           if (res['code'] === 1) {
-            this.notificationService.show('success', 'Success', 'Add Success');
+            this.notificationService.show('success', 'Success', ' Success');
           } else {
             let emailError = res['message'].email;
             let staffIdError = res['message'].staffid;

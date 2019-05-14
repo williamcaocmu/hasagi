@@ -88,8 +88,7 @@ export class CreateAuditPlanComponent implements OnInit {
       res => {
         if (res['code'] === 1) {
           this.router.navigate(['/main/pm/audit-plans']);
-        }
-        else if(res['code'] === 0) {
+        } else if (res['code'] === 0) {
           this.noti.show('error', 'Error', 'Action Fail !!');
         }
       },
@@ -98,8 +97,9 @@ export class CreateAuditPlanComponent implements OnInit {
   }
 
   getAll() {
-    this.pmService.getAllProjects().subscribe(
+    this.pmService.getProjectInAuditPlan().subscribe(
       res => {
+        console.log(res);
         if (res['code'] === 1) {
           this.projects = res['data'];
         }
@@ -120,8 +120,7 @@ export class CreateAuditPlanComponent implements OnInit {
         if (res['code'] === 1) {
           this.noti.show('success', 'Success', 'Success !!!');
           this.goBack();
-        }
-        else if(res['code'] === 0) {
+        } else if (res['code'] === 0) {
           this.noti.show('error', 'Error', 'Action Fail !!');
         }
       },

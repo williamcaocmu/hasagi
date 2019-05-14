@@ -46,7 +46,6 @@ export class PublicDocumentComponent implements OnInit {
   current = 2;
 
   ngOnInit() {
-    console.log('dasdsa');
     this.activatedRoute.params.subscribe(param => {
       this.paramId = param['id'];
       if (this.paramId) {
@@ -80,13 +79,6 @@ export class PublicDocumentComponent implements OnInit {
     }
   }
 
-  //   <nz-steps [nzCurrent]="Waiting Reviewer" nzSize="small"> // 1
-  //   <nz-step nzTitle="Working"></nz-step> //2,3
-  //   <nz-step nzTitle="Waiting QAM"></nz-step> //4
-  //   <nz-step nzTitle="Working"></nz-step>//5
-  //   <nz-step nzTitle="Public"></nz-step>//
-  // </nz-steps>
-
   getAuth() {
     this.authService.getMe().subscribe(
       res => {
@@ -103,14 +95,12 @@ export class PublicDocumentComponent implements OnInit {
     this.uploading = true;
     this.pmService.postFile(this.fileList[0]).subscribe(
       res => {
-        console.log('res', res);
         if (res['code'] == 1) {
           this.fileupload = res['data'];
           this.uploading = false;
         }
       },
       err => {
-        console.log('err', err);
         this.uploading = false;
       }
     );
@@ -125,9 +115,7 @@ export class PublicDocumentComponent implements OnInit {
           this.document.permission = res['permission'];
           this.document.reviewers = res['reviewers'];
           this.selectedReviewer = this.document.reviewer['id'];
-          console.log(this.document);
         }
-        // this.document
       },
       err => {
         console.log('err', err);
@@ -137,12 +125,15 @@ export class PublicDocumentComponent implements OnInit {
 
   approve(role) {
     this.uploading = true;
-    this.pmService.postFile(this.fileList[0]).subscribe(
+    const file = this.fileList[0] || { file: this.document.data['file'] };
+    console.log(file);
+
+    this.pmService.postFile(file).subscribe(
       res => {
-        console.log('res', res);
         if (res['code'] == 1) {
           this.fileupload = res['data'];
           this.uploading = false;
+
           const data = {
             name: this.document.data['name'],
             description: this.document.data['description'],
@@ -156,7 +147,7 @@ export class PublicDocumentComponent implements OnInit {
           };
           this.pmService.approveAPI(data).subscribe(
             res => {
-              this.notification.show('success', 'Success', 'approve success');
+              this.notification.show('success', 'Success', 'Success !!!');
               this.comment = '';
             },
             err => {
@@ -174,9 +165,9 @@ export class PublicDocumentComponent implements OnInit {
 
   discard(role) {
     this.uploading = true;
-    this.pmService.postFile(this.fileList[0]).subscribe(
+    const file = this.fileList[0] || { file: this.document.data['file'] };
+    this.pmService.postFile(file).subscribe(
       res => {
-        console.log('res', res);
         if (res['code'] == 1) {
           this.fileupload = res['data'];
           this.uploading = false;
@@ -194,7 +185,7 @@ export class PublicDocumentComponent implements OnInit {
           this.pmService.approveAPI(data).subscribe(
             res => {
               console.log('success', res);
-              this.notification.show('success', 'Success', 'discard success');
+              this.notification.show('success', 'Success', 'Success !!!');
               this.comment = '';
             },
             err => {
@@ -211,19 +202,18 @@ export class PublicDocumentComponent implements OnInit {
   }
 
   createDocument() {
-    console.log('create document');
     this.router.navigate([`main/pm/manage-projects/view/${this.paramId}/add`]);
   }
 
   getListDocuments() {
     this.pmService.getAllDocuments(this.paramId).subscribe(
       res => {
-        console.log('res', res);
         if (res['code'] === 1) {
           this.qamList = res['qam'];
           this.reviewerList = res['reviewer'];
           this.qaoList = res['uploader'];
           this.projectRole = res['projectrole'];
+          console.log(res);
         }
       },
       err => {
@@ -250,7 +240,7 @@ export class PublicDocumentComponent implements OnInit {
     };
     this.pmService.sendCommentAPI(data).subscribe(
       res => {
-        this.notification.show('success', 'Success', 'approve success');
+        this.notification.show('success', 'Success', 'Success !!!');
         this.comment = '';
       },
       err => {

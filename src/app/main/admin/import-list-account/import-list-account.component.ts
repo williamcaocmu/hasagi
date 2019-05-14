@@ -52,13 +52,14 @@ export class ImportListAccountComponent implements OnInit {
     this.fileList = this.fileList.concat(file);
     return false;
   };
+  
   handleUpload(): void {
     this.uploading = true;
     this.http.postFile(this.fileList[0]).subscribe(
       res => {
         if (res['code'] === 1) {
           this.uploading = false;
-          this.notification.show('success', 'Success', 'Import file success');
+          this.notification.show('success', 'Success', 'Success');
         } else {
           this.uploading = false;
           this.errors = res['error'];

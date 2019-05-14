@@ -45,6 +45,11 @@ const routes: Routes = [
         canActivate: [AuthGuardService],
         children: [
           {
+            path: 'manage-projects/add',
+            component: ProjectFormComponent,
+            canActivate: [AuthGuardService]
+          },
+          {
             path: 'add-new-account',
             component: AddNewAccountComponent,
             canActivate: [AuthGuardService]
@@ -59,14 +64,10 @@ const routes: Routes = [
             component: ManageAccountComponent,
             canActivate: [AuthGuardService]
           },
+
           {
             path: ':id',
             component: AddNewAccountComponent,
-            canActivate: [AuthGuardService]
-          },
-          {
-            path: 'manage-projects/add',
-            component: ProjectFormComponent,
             canActivate: [AuthGuardService]
           }
         ]
@@ -87,6 +88,11 @@ const routes: Routes = [
             canActivate: [AuthGuardService]
           },
           {
+            path: 'manage-projects/add  ',
+            component: ProjectFormComponent,
+            canActivate: [AuthGuardService]
+          },
+          {
             path: 'manage-projects/view/all-document',
             component: AllDocumentsComponent,
             canActivate: [AuthGuardService]
@@ -96,28 +102,23 @@ const routes: Routes = [
             component: NewPublicDocumentComponent,
             canActivate: [AuthGuardService]
           },
-          {
-            path: 'manage-projects/add  ',
-            component: ProjectFormComponent,
-            canActivate: [AuthGuardService]
-          },
+
           {
             path: 'manage-projects/:id',
             component: ProjectFormComponent,
             canActivate: [AuthGuardService]
           },
-
+          {
+            path: 'manage-projects/view/:id/add',
+            component: DocumentFormComponent,
+            canActivate: [AuthGuardService]
+          },
           {
             path: 'manage-projects/view/:id',
             component: PublicDocumentComponent,
             canActivate: [AuthGuardService]
           },
 
-          {
-            path: 'manage-projects/view/:id/add',
-            component: DocumentFormComponent,
-            canActivate: [AuthGuardService]
-          },
           {
             path: 'audit-plans',
             component: AuditPlanListComponent,

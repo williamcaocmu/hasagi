@@ -21,7 +21,7 @@
       nzShowSearch
       nzPlaceHolder="Select a project"
     >
-      <nz-option nzValue="all" nzLabel="--All--"></nz-option>
+      <!-- <nz-option nzValue="all" nzLabel="--All--"></nz-option> -->
       <nz-option
         *ngFor="let project of projects"
         nzValue="{{ project.id }}"
@@ -31,7 +31,7 @@
   </nz-form-control>
 </div>
 
-<table cellspacing="0" border="0">
+<table cellspacing="0" style="background-color: white" >
   <colgroup width="152"></colgroup>
   <colgroup width="170"></colgroup>
   <colgroup width="64"></colgroup>
@@ -43,17 +43,17 @@
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        height="87"
-        align="center"
-        valign="middle"
+        height="50"
+        align="top"
+        valign="top"
         bgcolor="#ED7D31"
       >
         <b><font face="Arial" color="#FFFFFF">Phase / Process</font></b>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        align="center"
-        valign="middle"
+        align="top"
+        valign="top"
         bgcolor="#ED7D31"
       >
         <b
@@ -64,16 +64,16 @@
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        align="center"
-        valign="middle"
+        align="top"
+        valign="top"
         bgcolor="#ED7D31"
       >
         <b><font face="Arial" color="#FFFFFF">Doer</font></b>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        align="center"
-        valign="middle"
+        align="top"
+        valign="top"
         bgcolor="#ED7D31"
       >
         <a class="comment-indicator"></a>
@@ -82,8 +82,8 @@
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        align="center"
-        valign="middle"
+        align="top"
+        valign="top"
         bgcolor="#ED7D31"
       >
         <a class="comment-indicator"></a>
@@ -92,8 +92,8 @@
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        align="center"
-        valign="middle"
+        align="top"
+        valign="top"
         bgcolor="#ED7D31"
       >
         <b
@@ -104,16 +104,16 @@
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        align="center"
-        valign="middle"
+        align="top"
+        valign="top"
         bgcolor="#ED7D31"
       >
         <b><font face="Arial" color="#FFFFFF">Justification</font></b>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        align="center"
-        valign="middle"
+        align="top"
+        valign="top"
         bgcolor="#ED7D31"
       >
         <b><font face="Arial" color="#FFFFFF">Note</font></b>
@@ -123,7 +123,7 @@
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        height="67"
+        height="50"
         align="left"
         valign="top"
       >
@@ -202,7 +202,7 @@
     <tr>
       <td
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        height="83"
+        height="50"
         align="left"
         valign="top"
       >
@@ -513,26 +513,26 @@
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="50"
         align="left"
-        valign="middle"
+        valign="top"
       ></td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">Conduct Kick off meeting</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
         bgcolor="#92D050"
       >
         <font face="Arial">M</font>
@@ -548,14 +548,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['6-1']"
@@ -569,7 +569,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['6-2']"
@@ -602,7 +602,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
@@ -679,7 +679,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
@@ -741,7 +741,7 @@
         height="83"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <b
           ><font face="Arial"><br /></font
@@ -751,7 +751,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">Develop Security and Data Management Plan</font>
       </td>
@@ -759,7 +759,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">PM</font>
       </td>
@@ -782,16 +782,16 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <textarea
           [(ngModel)]="obj['9-1']"
@@ -805,8 +805,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <textarea
           [(ngModel)]="obj['9-2']"
@@ -828,21 +828,21 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">Initiate case study </font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
         bgcolor="#92D050"
       >
         <font face="Arial">M</font>
@@ -858,14 +858,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['10-1']"
@@ -879,7 +879,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['10-2']"
@@ -905,7 +905,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"
           >Manage Issue / Risk and <br />Manage KPI (Quality Objective )</font
@@ -914,14 +914,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
         bgcolor="#92D050"
       >
         <font face="Arial">M</font>
@@ -937,14 +937,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['11-1']"
@@ -959,7 +959,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['11-2']"
@@ -976,7 +976,7 @@
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="450"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <b
           ><font face="Arial"><br /></font
@@ -986,6 +986,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
+        heigh="50"
       >
         <font face="Arial"
           >Conduct meetings and reports to <br />- Update / tracking status of
@@ -997,14 +998,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
         bgcolor="#92D050"
       >
         <font face="Arial">M</font>
@@ -1020,28 +1021,27 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['12-1']"
-         
           name=""
           id=""
           cols="30"
-          rows="10"
+          rows="5"
         ></textarea>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['12-2']"
@@ -1067,21 +1067,21 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">Manage the handover plan for new members </font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
         bgcolor="#92D050"
       >
         <font face="Arial">M</font>
@@ -1097,14 +1097,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['13-1']"
@@ -1118,7 +1118,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['13-2']"
@@ -1135,7 +1135,7 @@
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="83"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <b
           ><font face="Arial"><br /></font
@@ -1144,21 +1144,21 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">Conduct Milestone Review / Baseline Review</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
         bgcolor="#92D050"
       >
         <font face="Arial">M</font>
@@ -1174,14 +1174,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['14-1']"
@@ -1195,7 +1195,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['14-2']"
@@ -1212,7 +1212,7 @@
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="546"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <b
           ><font face="Arial"><br /></font
@@ -1221,14 +1221,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="top"
+        
       >
         <font face="Arial">Perform Cause Analysis and Resolution</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="top"
+        
       >
         <font face="Arial">PM, CAR Board</font>
       </td>
@@ -1251,14 +1251,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['15-1']"
@@ -1273,7 +1273,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="bottom"
+        
       >
         <textarea
           [(ngModel)]="obj['1-1']"
@@ -1291,7 +1291,7 @@
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="83"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <b
           ><font face="Arial"><br /></font
@@ -1330,14 +1330,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['16-1']"
@@ -1351,7 +1351,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <textarea
           [(ngModel)]="obj['16-2']"
@@ -1368,14 +1368,14 @@
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="433"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       ></td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial"
           >Security <br />Design and Implementation Planning covering the
@@ -1387,7 +1387,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">PM, BA, Dev/TL</font>
       </td>
@@ -1410,16 +1410,16 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <textarea
           [(ngModel)]="obj['17-1']"
@@ -1433,8 +1433,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <textarea
           [(ngModel)]="obj['17-2']"
@@ -1450,8 +1450,8 @@
         style="border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         height="367"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <b
           ><font face="Arial"><br /></font
@@ -1461,7 +1461,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial"
           >Project Security Management Process<br />Perform security activities
@@ -1473,7 +1473,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">PM, IT, Released Member</font>
       </td>
@@ -1496,16 +1496,16 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <textarea
           [(ngModel)]="obj['17-1']"
@@ -1519,8 +1519,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <textarea
           [(ngModel)]="obj['17-2']"
@@ -1770,7 +1770,7 @@
     <tr>
       <td
         style="border-top: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
-        height="87"
+       height="50"
         align="left"
         valign="top"
       >
@@ -2760,7 +2760,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"
           >Develop and Execute test Scenarios / Regression testing before
@@ -2770,14 +2770,14 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial">PM</font>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
         bgcolor="#92D050"
       >
         <font face="Arial">M</font>
@@ -2793,7 +2793,7 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
+        valign="top"
       >
         <font face="Arial"><br /></font>
       </td>
@@ -2832,7 +2832,7 @@
         height="83"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <b><font face="Arial">Warranty Process</font></b>
       </td>
@@ -2840,7 +2840,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">Manage Bugs &amp; CR as defined SLA</font>
       </td>
@@ -2848,7 +2848,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">Project team, Client</font>
       </td>
@@ -2871,8 +2871,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
@@ -2911,7 +2911,7 @@
         height="150"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <b><font face="Arial">Project Closure Procedure</font></b>
       </td>
@@ -2919,7 +2919,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial"
           >Create Post-mortem Report and Conduct a post-mortem meeting</font
@@ -2929,7 +2929,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">PM</font>
       </td>
@@ -2952,8 +2952,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
@@ -2992,7 +2992,7 @@
         height="267"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <b
           ><font face="Arial"><br /></font
@@ -3002,7 +3002,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial"
           >Inform to related person to release all resources and team can update
@@ -3013,7 +3013,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">PM</font>
       </td>
@@ -3036,8 +3036,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
@@ -3076,7 +3076,7 @@
         height="67"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <b
           ><font face="Arial"><br /></font
@@ -3086,7 +3086,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">Re-visit Project Complexity </font>
       </td>
@@ -3094,7 +3094,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">TA</font>
       </td>
@@ -3117,8 +3117,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
@@ -3157,7 +3157,7 @@
         height="83"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <b
           ><font face="Arial"><br /></font
@@ -3167,7 +3167,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">Review and Update Case Study</font>
       </td>
@@ -3175,7 +3175,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">PM</font>
       </td>
@@ -3198,8 +3198,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
@@ -3238,7 +3238,7 @@
         height="167"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <b
           ><font face="Arial"><br /></font
@@ -3248,7 +3248,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial"
           >Gather the lessons learnt and best practices and submit to
@@ -3259,7 +3259,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">PM</font>
       </td>
@@ -3282,8 +3282,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>
@@ -3322,7 +3322,7 @@
         height="50"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <b
           ><font face="Arial"><br /></font
@@ -3332,7 +3332,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">Calculate Project Bonus</font>
       </td>
@@ -3340,7 +3340,7 @@
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
         valign="top"
-        bgcolor="#D9D9D9"
+        
       >
         <font face="Arial">PM</font>
       </td>
@@ -3363,8 +3363,8 @@
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"
         align="left"
-        valign="middle"
-        bgcolor="#D9D9D9"
+        valign="top"
+        
       >
         <font face="Arial"><br /></font>
       </td>

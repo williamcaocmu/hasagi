@@ -50,8 +50,7 @@ export class ProjectFormComponent implements OnInit {
     await this.getAuth();
     await this.getQA();
     this.activatedRoute.params.subscribe(param => {
-      if (param['id']) {
-        console.log(param['id']);
+      if (param['id'] && param['id'] !== 'add') {
         this.editMode = true;
         this.getDetail(param['id']);
       }
@@ -133,7 +132,7 @@ export class ProjectFormComponent implements OnInit {
     if (this.project.role === 'pm') {
       this.project.qam = this.selectedQAM;
       this.project.qao = this.selectedQAO;
-      console.log('pm ', this.project)
+      console.log('pm ', this.project);
       this.pmService.updateProjectPMApi(this.project).subscribe(
         res => {
           if (res['code'] === 1) {

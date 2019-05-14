@@ -61,20 +61,24 @@ export class MainComponent implements OnInit {
         err => this.router.navigate(["/login"])
       );
   }
+
+  filter(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        text: this.text,
+        type: this.selectedProvince
+      }
+    };
+    this.router.navigate(
+      ["/main/pm/manage-projects/view/public-document"],
+      navigationExtras
+    );
+  }
  
 
   onKeydown(e) {
     if (e.key === "Enter") {
-      let navigationExtras: NavigationExtras = {
-        queryParams: {
-          text: this.text,
-          type: this.selectedProvince
-        }
-      };
-      this.router.navigate(
-        ["/main/pm/manage-projects/view/public-document"],
-        navigationExtras
-      );
+     this.filter()
     }
   }
 }
