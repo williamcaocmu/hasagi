@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PmService } from '../pm.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-documents',
@@ -7,7 +8,7 @@ import { PmService } from '../pm.service';
   styleUrls: ['./all-documents.component.css']
 })
 export class AllDocumentsComponent implements OnInit {
-  constructor(private pmService: PmService) {}
+  constructor(private pmService: PmService, private router: Router) {}
   sortName = null;
   sortValue = null;
 
@@ -79,9 +80,8 @@ export class AllDocumentsComponent implements OnInit {
   }
 
   getAllProjects() {
-    this.pmService.getAllProjects().subscribe(
+    this.pmService.getProjectInAuditPlan().subscribe(
       res => {
-        console.log('res', res);
         if (res['code'] === 1) {
           this.projects = res['data'];
         }
@@ -91,6 +91,12 @@ export class AllDocumentsComponent implements OnInit {
   }
 
   search() {
-    this.getAllDocuments(this.selectedProject);
+    // this.getAllDocuments(this.selectedProject);
+    // main/pm/manage-projects/view/27/add
+    console.log(this.selectedProject);
+
+    this.router.navigate([
+      `main/pm/manage-projects/view/${this.selectedProject}/add`
+    ]);
   }
 }
