@@ -1,0 +1,4 @@
+tbody > tr > td {
+  max-width: 150px !important;
+  overflow: hidden;
+}

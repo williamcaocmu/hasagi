@@ -16,9 +16,13 @@
   margin-right: 8px;
 }
 
-
-.width150{
+.width150 {
   width: 150px !important;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
+}
+
+tbody > tr > td {
+  max-width: 150px !important;
+  overflow: hidden;
 }
