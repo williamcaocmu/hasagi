@@ -4,11 +4,15 @@
 >
   <div style="width: 90%; overflow: scroll;">
     <div style="display: flex; ">
-      <nz-form-control style="width: 40%;margin-bottom: 10px">
+      <nz-form-control
+        *ngIf="projects.length > 0"
+        style="width: 40%;margin-bottom: 10px"
+      >
         <nz-select
-          name="qam"
-          style="width: 100%;"
+          nzShowSearch
+          nzPlaceHolder="Select a person"
           [(ngModel)]="selectedProject"
+          style="width: 100%"
         >
           <nz-option
             *ngFor="let item of projects"
@@ -18,15 +22,15 @@
           </nz-option>
         </nz-select>
       </nz-form-control>
-      <div style="padding: 4px 0 0 5px; width: 10%;">
+      <div style="padding: 4px 0 0 5px; width: 20%;">
         <button
           nz-button
           style="width: 100%; "
           (click)="search()"
           nzType="primary"
-          *ngIf="selectedProject"
+          [disabled]="!selectedProject.length > 0"
         >
-          Create
+          Create Document
         </button>
       </div>
     </div>
