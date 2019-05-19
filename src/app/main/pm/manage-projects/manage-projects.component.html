@@ -2,7 +2,7 @@
   class="content"
   style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
 >
-  <div style="width: 100%; ">
+  <div style="width: 100%; overflow: scroll; ">
     <div *ngIf="me?.role === 'admin'" (click)="addProject()">
       <button nz-button nzType="primary">Add Projects</button>
     </div>

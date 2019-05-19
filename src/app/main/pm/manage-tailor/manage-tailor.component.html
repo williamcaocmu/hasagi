@@ -2,11 +2,11 @@
   class="content"
   style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
 >
-  <div style="width: 100%; ">
+  <div style="width: 100%;overflow: scroll ">
     <div (click)="addTailor()">
       <button nz-button nzType="primary">Add Tailor</button>
     </div>
-    <div style="margin-top:20px; overflow: scroll">
+    <div style="margin-top:20px; ">
       <nz-table
         #nzTable
         [nzNoResult]="'No Result'"
