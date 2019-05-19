@@ -32,12 +32,12 @@
         <tbody>
           <ng-template ngFor let-data [ngForOf]="nzTable.data">
             <tr>
-              <td style="width: 150px">{{ data.name }}</td>
-              <td class="width150">{{ data.description }}</td>
-              <td class="width150">{{ data.role }}</td>
-              <td style="width: 150px">{{ data.start }}</td>
-              <td style="width: 150px">{{ data.end }}</td>
-              <td style="width: 150px">{{ data.pmname[0].name }}</td>
+              <td style="width: 150px">{{ data?.name }}</td>
+              <td class="width150">{{ data?.description }}</td>
+              <td class="width150">{{ data?.role }}</td>
+              <td style="width: 150px">{{ data?.start }}</td>
+              <td style="width: 150px">{{ data?.end }}</td>
+              <td style="width: 150px">{{ (data?.pmname)[0]?.name }}</td>
 
               <td style="width: 150px">
                 <button

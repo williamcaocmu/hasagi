@@ -45,7 +45,9 @@ export class ManageProjectsComponent implements OnInit {
       res => {
         if (res['code'] === 1) {
           this.projects = res['data'];
+
           this.displayData = [...this.projects];
+          console.log(this.displayData);
           this.loadingTable = false;
         }
       },
@@ -55,8 +57,6 @@ export class ManageProjectsComponent implements OnInit {
       }
     );
   }
-
-  
 
   sort(sort: { key: string; value: string }): void {
     this.sortName = sort.key;

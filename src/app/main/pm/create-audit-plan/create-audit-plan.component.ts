@@ -128,6 +128,20 @@ export class CreateAuditPlanComponent implements OnInit {
     );
   }
 
+  editAuditPlan() {
+    this.audit.checklist = this.questions.map(item => item.question);
+    this.pmService.approveAuditAPI(this.audit).subscribe(
+      res => {
+        if (res['code'] === 1) {
+          this.router.navigate(['/main/pm/audit-plans']);
+        } else if (res['code'] === 0) {
+          this.noti.show('error', 'Error', 'Action Fail !!');
+        }
+      },
+      err => console.log('err', err)
+    );
+  }
+
   postComment() {
     console.log(this.audit['id']);
     this.pmService

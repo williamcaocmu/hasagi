@@ -169,7 +169,7 @@
             </div>
             <div class="right">
               <button
-                (click)="createAuditPlan()"
+                (click)="editMode ? editAuditPlan() : createAuditPlan()"
                 style="margin-right:10px"
                 nz-button
                 nzType="primary"
