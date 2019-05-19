@@ -4,7 +4,7 @@
 >
   <div style="width: 90%; overflow: scroll;">
     <div>
-      <button (click)="addAuditPlan()" nz-button nzType="primary">
+      <button *ngIf="me?.role == 'qao'" (click)="addAuditPlan()" nz-button nzType="primary">
         Add Audit Plan
       </button>
       <nz-form-control>

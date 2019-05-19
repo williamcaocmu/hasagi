@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PmService } from '../pm.service';
+import { AuthService } from 'src/app/login/auth.service';
 
 @Component({
   selector: 'app-puclic-audit-plan',
@@ -8,16 +9,29 @@ import { PmService } from '../pm.service';
   styleUrls: ['./puclic-audit-plan.component.css']
 })
 export class PuclicAuditPlanComponent implements OnInit {
-  constructor(private router: Router, private pmService: PmService) {}
+  me;
+  constructor(private router: Router, private pmService: PmService,   private authService: AuthService,) {}
   auditPlan = [];
   projects = [];
   projectFilter = null;
   filterPlan = [];
 
   ngOnInit() {
+    this.getAuth()
     this.getAll();
     this.getListAuditPlan();
   }
+
+  getAuth() {
+    this.authService.getMe().subscribe(
+      res => {
+        this.me = res;
+        console.log(this.me)
+      },
+      err => console.log("err", err)
+    );
+  }
+
 
   addAuditPlan() {
     this.router.navigate(['/main/pm/audit-plans/add']);

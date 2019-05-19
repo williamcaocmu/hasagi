@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PmService } from '../pm.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/login/auth.service';
 
 @Component({
   selector: 'app-manage-tailor',
@@ -13,11 +14,24 @@ export class ManageTailorComponent implements OnInit {
   sortName = null;
   sortValue = null;
   displayData = [];
+  me
 
-  constructor(private pmService: PmService, private router: Router) {}
+  constructor(private pmService: PmService, private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
+    this.getAuth()
     this.getAll();
+  }
+
+  
+  getAuth() {
+    this.authService.getMe().subscribe(
+      res => {
+        this.me = res;
+        console.log(this.me)
+      },
+      err => console.log("err", err)
+    );
   }
 
   getAll() {
@@ -26,6 +40,7 @@ export class ManageTailorComponent implements OnInit {
         if (res['code'] === 1) {
           console.log(res['data']);
           this.projects = res['data'];
+          this.projects.map((item, i) => (item.index = i));
           this.displayData = [...this.projects];
         }
       },

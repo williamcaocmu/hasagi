@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PmService } from '../pm.service';
+import { AuthService } from 'src/app/login/auth.service';
 
 @Component({
   selector: 'app-audit-plan-list',
@@ -8,7 +9,7 @@ import { PmService } from '../pm.service';
   styleUrls: ['./audit-plan-list.component.css']
 })
 export class AuditPlanListComponent implements OnInit {
-  constructor(private router: Router, private pmService: PmService) {}
+  constructor(private router: Router, private pmService: PmService, private authService: AuthService) {}
   auditPlan = [];
   projects = [];
   projectFilter = null;
@@ -16,8 +17,10 @@ export class AuditPlanListComponent implements OnInit {
   sortValue = null;
   sortName = null;
   displayData = [];
+  me;
 
   ngOnInit() {
+    this.getAuth()
     this.getAll();
     this.getListAuditPlan();
   }
@@ -76,6 +79,17 @@ export class AuditPlanListComponent implements OnInit {
     } else {
       this.displayData = data;
     }
+  }
+
+  
+  getAuth() {
+    this.authService.getMe().subscribe(
+      res => {
+        this.me = res;
+        console.log(this.me)
+      },
+      err => console.log("err", err)
+    );
   }
 
   getListAuditPlan() {
