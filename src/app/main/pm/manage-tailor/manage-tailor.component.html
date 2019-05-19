@@ -16,9 +16,7 @@
       >
         <thead (nzSortChange)="sort($event)" nzSingleSort>
           <tr>
-            <th nzShowSort nzSortKey="id">
-              Id
-            </th>
+          
             <th nzShowSort nzSortKey="name">Name</th>
             <th nzShowSort nzSortKey="project">Project</th>
 
@@ -28,7 +26,6 @@
         <tbody>
           <ng-template ngFor let-data [ngForOf]="nzTable.data">
             <tr>
-              <td>{{ data.id }}</td>
               <td>{{ data.name }}</td>
               <td>{{ data.project }}</td>
               <td style="width: 150px">
