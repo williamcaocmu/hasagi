@@ -21,6 +21,7 @@
           name="staffid"
           required
           #staffid="ngModel"
+          readonly
         />
         <div *ngIf="staffid.invalid && (staffid.dirty || staffid.touched)">
           <nz-form-explain style="color: red">Bắt buộc nhập</nz-form-explain>

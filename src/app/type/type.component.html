@@ -11,6 +11,7 @@
       name="name"
       required
       placeholder="Input Name"
+      [readonly]="!roleUser"
     />
   </nz-form-control>
   <nz-form-control>
@@ -20,6 +21,7 @@
       [(ngModel)]="projectFilter"
       nzShowSearch
       nzPlaceHolder="Select a project"
+      [nzDisabled]="!roleUser"
     >
       <nz-option nzValue="all" nzLabel="--All--"></nz-option>
       <nz-option

@@ -1,45 +1,26 @@
-<nz-content
-  class="content"
-  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; "
->
+<nz-content class="content"
+  style="background:#fff;margin-top: 20px; padding: 24px; min-height: 100vh ; display: flex; justify-content: center ; ">
   <div style="width: 90%;">
-    <button
-      *ngIf="projectRole === 'qao'"
-      style="margin-right:10px"
-      nz-button
-      nzType="primary"
-      (click)="createDocument()"
-    >
+    <button *ngIf="projectRole === 'qao'" style="margin-right:10px" nz-button nzType="primary"
+      (click)="createDocument()">
       Create Document
     </button>
 
     <div *ngIf="qaoList.length > 0">
       <h2 style="text-align:center">QAO</h2>
       <nz-collapse nzAccordion>
-        <nz-collapse-panel
-          *ngFor="let data of qaoList; let i = index"
-          [nzHeader]="data.name"
-          [nzActive]="data.id == paramId"
-          (nzActiveChange)="activeCol(data.id, 'uploader')"
-        >
+        <nz-collapse-panel *ngFor="let data of qaoList; let i = index" [nzHeader]="data.name"
+          [nzActive]="data.id == paramId" (nzActiveChange)="activeCol(data.id, 'uploader')">
           <form #projectForm="ngForm">
             <nz-form-item>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Document Name : </label>
-                <input
-                  [(ngModel)]="document.data.name"
-                  nz-input
-                  name="name"
-                  required
-                  [disabled]="!document?.permission?.info"
-                />
+                <input [(ngModel)]="document.data.name" nz-input name="name" required
+                  [disabled]="!document?.permission?.info" />
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Status : </label>
-                <nz-steps
-                  [nzCurrent]="handleStep(document.data.status)"
-                  nzSize="small"
-                >
+                <nz-steps [nzCurrent]="handleStep(document.data.status)" nzSize="small">
                   <nz-step nzTitle="Waiting Reviewer"></nz-step>
                   <nz-step nzTitle="On Going"></nz-step>
                   <nz-step nzTitle="Waiting QAM"></nz-step>
@@ -49,35 +30,17 @@
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Description : </label>
-                <textarea
-                  [(ngModel)]="document.data.description"
-                  name="description"
-                  rows="4"
-                  nz-input
-                  [disabled]="!document?.permission?.info"
-                ></textarea>
+                <textarea [(ngModel)]="document.data.description" name="description" rows="4" nz-input
+                  [disabled]="!document?.permission?.info"></textarea>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Type : </label>
-                <nz-select
-                  [disabled]="!document?.permission?.info"
-                  [(ngModel)]="document.data.type"
-                  name="projectType"
-                  style="width: 100%;"
-                >
-                  <nz-option
-                    nzValue="process template"
-                    nzLabel="Process Template"
-                  ></nz-option>
-                  <nz-option
-                    nzValue="checklist"
-                    nzLabel="Checklist"
-                  ></nz-option>
+                <nz-select [disabled]="!document?.permission?.info" [(ngModel)]="document.data.type" name="projectType"
+                  style="width: 100%;">
+                  <nz-option nzValue="process template" nzLabel="Process Template"></nz-option>
+                  <nz-option nzValue="checklist" nzLabel="Checklist"></nz-option>
                   <nz-option nzValue="standard" nzLabel="Standard"></nz-option>
-                  <nz-option
-                    nzValue="best practice"
-                    nzLabel="Best Practice"
-                  ></nz-option>
+                  <nz-option nzValue="best practice" nzLabel="Best Practice"></nz-option>
                 </nz-select>
               </nz-form-control>
               <nz-form-control>
@@ -88,64 +51,35 @@
                   }}
                 </a>
               </nz-form-control>
-              <nz-form-control
-                *ngIf="document.permission.file || document.permission.reviewer"
-                style="margin-top:10px"
-              >
+              <nz-form-control *ngIf="document.permission.file || document.permission.reviewer" style="margin-top:10px">
                 <label class="label"> Add File</label>
                 <div>
-                  <nz-upload
-                    [nzLimit]="0"
-                    [(nzFileList)]="fileList"
-                    [nzBeforeUpload]="beforeUpload"
-                  >
+                  <nz-upload [nzLimit]="0" [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
                     <button nz-button>
                       <i nz-icon type="upload"></i><span>Select File</span>
                     </button>
                   </nz-upload>
-                  <button
-                    nz-button
-                    [nzType]="'primary'"
-                    (click)="handleUpload()"
-                    [disabled]="fileList.length == 0"
-                    style="margin-top: 16px; display: none"
-                  >
+                  <button nz-button [nzType]="'primary'" (click)="handleUpload()" [disabled]="fileList.length == 0"
+                    style="margin-top: 16px; display: none">
                     {{ uploading ? 'Uploading' : 'Start Upload' }}
                   </button>
                 </div>
               </nz-form-control>
               <nz-form-control>
                 <label class="label"> Reviewer</label>
-                <nz-select
-                  [disabled]="!document?.permission?.reviewer"
-                  [(ngModel)]="document.reviewer.id"
-                  name="reviewer"
-                  style="width: 100%;"
-                >
-                  <nz-option
-                    *ngFor="let item of document.reviewers"
-                    nzValue="{{ item.id }}"
-                    nzLabel="{{ item.name }}"
-                  >
+                <nz-select [disabled]="!document?.permission?.reviewer" [(ngModel)]="document.reviewer.id"
+                  name="reviewer" style="width: 100%;">
+                  <nz-option *ngFor="let item of document.reviewers" nzValue="{{ item.id }}" nzLabel="{{ item.name }}">
                   </nz-option>
                 </nz-select>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Comment</label>
-                <div
-                  style="width: 100%; padding: 0 5rem; max-height: 200px; overflow: scroll;"
-                >
-                  <nz-list
-                    [nzDataSource]="document.data.comments"
-                    [nzRenderItem]="item"
-                    [nzItemLayout]="'horizontal'"
-                  >
+                <div style="width: 100%; padding: 0 5rem; max-height: 200px; overflow: scroll;">
+                  <nz-list [nzDataSource]="document.data.comments" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
                     <ng-template #item let-item>
                       <nz-list-item>
-                        <nz-list-item-meta
-                          [nzTitle]="item.user"
-                          nzDescription="{{ item.content }}"
-                        >
+                        <nz-list-item-meta [nzTitle]="item.user" nzDescription="{{ item.content }}">
                           <ng-template #nzTitle> </ng-template>
                         </nz-list-item-meta>
                       </nz-list-item>
@@ -154,39 +88,20 @@
                 </div>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
-                <textarea
-                  [(ngModel)]="comment"
-                  name="comment"
-                  rows="4"
-                  nz-input
-                ></textarea>
+                <textarea [(ngModel)]="comment" name="comment" rows="4" nz-input></textarea>
               </nz-form-control>
-              <div
-                style="margin-top: 25px; display: flex; justify-content: space-between"
-              >
+              <div style="margin-top: 25px; display: flex; justify-content: space-between">
                 <div class="left">
-                  <button
-                    (click)="sendComment('uploader')"
-                    nz-button
-                    nzType="default"
-                  >
+                  <button (click)="sendComment('uploader')" nz-button nzType="default">
                     Comment
                   </button>
                 </div>
                 <div class="right">
-                  <button
-                    style="margin-right:10px"
-                    nz-button
-                    nzType="primary"
-                    (click)="approve('uploader')"
-                  >
+                  <button *ngIf="document.permission.approve" style="margin-right:10px" nz-button nzType="primary"
+                    (click)="approve('uploader')">
                     Approve
                   </button>
-                  <button
-                    nz-button
-                    nzType="danger"
-                    (click)="discard('uploader')"
-                  >
+                  <button *ngIf="document.permission.reject" nz-button nzType="danger" (click)="discard('uploader')">
                     Reject
                   </button>
                 </div>
@@ -200,40 +115,23 @@
     <div *ngIf="qamList.length > 0">
       <h2 style="text-align:center">QAM</h2>
       <nz-collapse nzAccordion>
-        <nz-collapse-panel
-          *ngFor="let data of qamList; let i = index"
-          [nzHeader]="data.name"
-          [nzActive]="data.id == paramId"
-          (nzActiveChange)="activeCol(data.id, 'qam')"
-        >
+        <nz-collapse-panel *ngFor="let data of qamList; let i = index" [nzHeader]="data.name"
+          [nzActive]="data.id == paramId" (nzActiveChange)="activeCol(data.id, 'qam')">
           <form #projectForm="ngForm">
-            <button
-              *ngIf="document?.permission?.info"
-              style="margin-right:10px"
-              nz-button
-              nzType="primary"
-              (click)="editDocument()"
-            >
+            <button *ngIf="document?.permission?.info" style="margin-right:10px" nz-button nzType="primary"
+              (click)="editDocument()">
               Edit Document
             </button>
             <nz-form-item>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Document Name : </label>
 
-                <input
-                  [(ngModel)]="document.data.name"
-                  nz-input
-                  name="name"
-                  required
-                  [disabled]="!document?.permission?.info"
-                />
+                <input [(ngModel)]="document.data.name" nz-input name="name" required
+                  [disabled]="!document?.permission?.info" />
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Status : </label>
-                <nz-steps
-                  [nzCurrent]="handleStep(document.data.status)"
-                  nzSize="small"
-                >
+                <nz-steps [nzCurrent]="handleStep(document.data.status)" nzSize="small">
                   <nz-step nzTitle="Waiting Reviewer"></nz-step>
                   <nz-step nzTitle="On Going"></nz-step>
                   <nz-step nzTitle="Waiting QAM"></nz-step>
@@ -243,35 +141,17 @@
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Description : </label>
-                <textarea
-                  [(ngModel)]="document.data.description"
-                  name="description"
-                  rows="4"
-                  nz-input
-                  [disabled]="!document?.permission?.info"
-                ></textarea>
+                <textarea [(ngModel)]="document.data.description" name="description" rows="4" nz-input
+                  [disabled]="!document?.permission?.info"></textarea>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Type : </label>
-                <nz-select
-                  [(ngModel)]="document.data.type"
-                  name="projectType"
-                  style="width: 100%;"
-                  [disabled]="!document?.permission?.info"
-                >
-                  <nz-option
-                    nzValue="process template"
-                    nzLabel="Process Template"
-                  ></nz-option>
-                  <nz-option
-                    nzValue="checklist"
-                    nzLabel="Checklist"
-                  ></nz-option>
+                <nz-select [(ngModel)]="document.data.type" name="projectType" style="width: 100%;"
+                  [disabled]="!document?.permission?.info">
+                  <nz-option nzValue="process template" nzLabel="Process Template"></nz-option>
+                  <nz-option nzValue="checklist" nzLabel="Checklist"></nz-option>
                   <nz-option nzValue="standard" nzLabel="Standard"></nz-option>
-                  <nz-option
-                    nzValue="best practice"
-                    nzLabel="Best Practice"
-                  ></nz-option>
+                  <nz-option nzValue="best practice" nzLabel="Best Practice"></nz-option>
                 </nz-select>
               </nz-form-control>
               <nz-form-control>
@@ -282,65 +162,36 @@
                   }}
                 </a>
               </nz-form-control>
-              <nz-form-control
-                *ngIf="document.permission.file || document.permission.reviewer"
-                style="margin-top:10px"
-              >
+              <nz-form-control *ngIf="document.permission.file || document.permission.reviewer" style="margin-top:10px">
                 <label class="label"> Add File</label>
 
                 <div>
-                  <nz-upload
-                    [nzLimit]="0"
-                    [(nzFileList)]="fileList"
-                    [nzBeforeUpload]="beforeUpload"
-                  >
+                  <nz-upload [nzLimit]="0" [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
                     <button nz-button>
                       <i nz-icon type="upload"></i><span>Select File</span>
                     </button>
                   </nz-upload>
-                  <button
-                    nz-button
-                    [nzType]="'primary'"
-                    (click)="handleUpload()"
-                    [disabled]="fileList.length == 0"
-                    style="margin-top: 16px; display: none"
-                  >
+                  <button nz-button [nzType]="'primary'" (click)="handleUpload()" [disabled]="fileList.length == 0"
+                    style="margin-top: 16px; display: none">
                     {{ uploading ? 'Uploading' : 'Start Upload' }}
                   </button>
                 </div>
               </nz-form-control>
               <nz-form-control>
                 <label class="label"> Reviewer</label>
-                <nz-select
-                  [disabled]="!document?.permission?.reviewer"
-                  [(ngModel)]="document.reviewer.id"
-                  name="reviewer"
-                  style="width: 100%;"
-                >
-                  <nz-option
-                    *ngFor="let item of document.reviewers"
-                    nzValue="{{ item.id }}"
-                    nzLabel="{{ item.name }}"
-                  >
+                <nz-select [disabled]="!document?.permission?.reviewer" [(ngModel)]="document.reviewer.id"
+                  name="reviewer" style="width: 100%;">
+                  <nz-option *ngFor="let item of document.reviewers" nzValue="{{ item.id }}" nzLabel="{{ item.name }}">
                   </nz-option>
                 </nz-select>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Comment</label>
-                <div
-                  style="width: 100%; padding: 0 5rem; max-height: 200px; overflow: scroll;"
-                >
-                  <nz-list
-                    [nzDataSource]="document.data.comments"
-                    [nzRenderItem]="item"
-                    [nzItemLayout]="'horizontal'"
-                  >
+                <div style="width: 100%; padding: 0 5rem; max-height: 200px; overflow: scroll;">
+                  <nz-list [nzDataSource]="document.data.comments" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
                     <ng-template #item let-item>
                       <nz-list-item>
-                        <nz-list-item-meta
-                          [nzTitle]="item.user"
-                          nzDescription="{{ item.content }}"
-                        >
+                        <nz-list-item-meta [nzTitle]="item.user" nzDescription="{{ item.content }}">
                           <ng-template #nzTitle> </ng-template>
                         </nz-list-item-meta>
                       </nz-list-item>
@@ -349,35 +200,20 @@
                 </div>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
-                <textarea
-                  [(ngModel)]="comment"
-                  name="comment"
-                  rows="4"
-                  nz-input
-                ></textarea>
+                <textarea [(ngModel)]="comment" name="comment" rows="4" nz-input></textarea>
               </nz-form-control>
-              <div
-                style="margin-top: 25px; display: flex; justify-content: space-between"
-              >
+              <div style="margin-top: 25px; display: flex; justify-content: space-between">
                 <div class="left">
-                  <button
-                    (click)="sendComment('qam')"
-                    nz-button
-                    nzType="default"
-                  >
+                  <button (click)="sendComment('qam')" nz-button nzType="default">
                     Comment
                   </button>
                 </div>
                 <div class="right">
-                  <button
-                    style="margin-right:10px"
-                    nz-button
-                    nzType="primary"
-                    (click)="approve('qam')"
-                  >
+                  <button *ngIf="document.permission.approve" style="margin-right:10px" nz-button nzType="primary"
+                    (click)="approve('qam')">
                     Approve
                   </button>
-                  <button nz-button nzType="danger" (click)="discard('qam')">
+                  <button *ngIf="document.permission.reject" nz-button nzType="danger" (click)="discard('qam')">
                     Reject
                   </button>
                 </div>
@@ -391,39 +227,22 @@
     <div *ngIf="reviewerList.length > 0">
       <h2 style="text-align:center">REVIEWER</h2>
       <nz-collapse nzAccordion>
-        <nz-collapse-panel
-          *ngFor="let data of reviewerList; let i = index"
-          [nzHeader]="data.name"
-          [nzActive]="data.id == paramId"
-          (nzActiveChange)="activeCol(data.id, 'reviewer')"
-        >
+        <nz-collapse-panel *ngFor="let data of reviewerList; let i = index" [nzHeader]="data.name"
+          [nzActive]="data.id == paramId" (nzActiveChange)="activeCol(data.id, 'reviewer')">
           <form #projectForm="ngForm">
-            <button
-              *ngIf="document?.permission?.info"
-              style="margin-right:10px"
-              nz-button
-              nzType="primary"
-              (click)="editDocument()"
-            >
+            <button *ngIf="document?.permission?.info" style="margin-right:10px" nz-button nzType="primary"
+              (click)="editDocument()">
               Edit Document
             </button>
             <nz-form-item>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Document Name : </label>
-                <input
-                  [(ngModel)]="document.data.name"
-                  nz-input
-                  name="name"
-                  required
-                  [disabled]="!document?.permission?.info"
-                />
+                <input [(ngModel)]="document.data.name" nz-input name="name" required
+                  [disabled]="!document?.permission?.info" />
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Status : </label>
-                <nz-steps
-                  [nzCurrent]="handleStep(document.data.status)"
-                  nzSize="small"
-                >
+                <nz-steps [nzCurrent]="handleStep(document.data.status)" nzSize="small">
                   <nz-step nzTitle="Waiting Reviewer"></nz-step>
                   <nz-step nzTitle="On Going"></nz-step>
                   <nz-step nzTitle="Waiting QAM"></nz-step>
@@ -433,35 +252,17 @@
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Description : </label>
-                <textarea
-                  [(ngModel)]="document.data.description"
-                  name="description"
-                  rows="4"
-                  nz-input
-                  [disabled]="!document?.permission?.info"
-                ></textarea>
+                <textarea [(ngModel)]="document.data.description" name="description" rows="4" nz-input
+                  [disabled]="!document?.permission?.info"></textarea>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Type : </label>
-                <nz-select
-                  [(ngModel)]="document.data.type"
-                  name="projectType"
-                  style="width: 100%;"
-                  [disabled]="!document?.permission?.info"
-                >
-                  <nz-option
-                    nzValue="process template"
-                    nzLabel="Process Template"
-                  ></nz-option>
-                  <nz-option
-                    nzValue="checklist"
-                    nzLabel="Checklist"
-                  ></nz-option>
+                <nz-select [(ngModel)]="document.data.type" name="projectType" style="width: 100%;"
+                  [disabled]="!document?.permission?.info">
+                  <nz-option nzValue="process template" nzLabel="Process Template"></nz-option>
+                  <nz-option nzValue="checklist" nzLabel="Checklist"></nz-option>
                   <nz-option nzValue="standard" nzLabel="Standard"></nz-option>
-                  <nz-option
-                    nzValue="best practice"
-                    nzLabel="Best Practice"
-                  ></nz-option>
+                  <nz-option nzValue="best practice" nzLabel="Best Practice"></nz-option>
                 </nz-select>
               </nz-form-control>
               <nz-form-control>
@@ -472,64 +273,35 @@
                   }}
                 </a>
               </nz-form-control>
-              <nz-form-control
-                *ngIf="document.permission.file || document.permission.reviewer"
-                style="margin-top:10px"
-              >
+              <nz-form-control *ngIf="document.permission.file || document.permission.reviewer" style="margin-top:10px">
                 <label class="label"> Add File</label>
                 <div>
-                  <nz-upload
-                    [nzLimit]="0"
-                    [(nzFileList)]="fileList"
-                    [nzBeforeUpload]="beforeUpload"
-                  >
+                  <nz-upload [nzLimit]="0" [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
                     <button nz-button>
                       <i nz-icon type="upload"></i><span>Select File</span>
                     </button>
                   </nz-upload>
-                  <button
-                    nz-button
-                    [nzType]="'primary'"
-                    (click)="handleUpload()"
-                    [disabled]="fileList.length == 0"
-                    style="margin-top: 16px; display: none"
-                  >
+                  <button nz-button [nzType]="'primary'" (click)="handleUpload()" [disabled]="fileList.length == 0"
+                    style="margin-top: 16px; display: none">
                     {{ uploading ? 'Uploading' : 'Start Upload' }}
                   </button>
                 </div>
               </nz-form-control>
               <nz-form-control>
                 <label class="label"> Reviewer</label>
-                <nz-select
-                  [disabled]="!document?.permission?.reviewer"
-                  [(ngModel)]="document.reviewer.id"
-                  name="reviewer"
-                  style="width: 100%;"
-                >
-                  <nz-option
-                    *ngFor="let item of document.reviewers"
-                    nzValue="{{ item.id }}"
-                    nzLabel="{{ item.name }}"
-                  >
+                <nz-select [disabled]="!document?.permission?.reviewer" [(ngModel)]="document.reviewer.id"
+                  name="reviewer" style="width: 100%;">
+                  <nz-option *ngFor="let item of document.reviewers" nzValue="{{ item.id }}" nzLabel="{{ item.name }}">
                   </nz-option>
                 </nz-select>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
                 <label class="label">Comment</label>
-                <div
-                  style="width: 100%; padding: 0 5rem; max-height: 200px; overflow: scroll;"
-                >
-                  <nz-list
-                    [nzDataSource]="document.data.comments"
-                    [nzRenderItem]="item"
-                    [nzItemLayout]="'horizontal'"
-                  >
+                <div style="width: 100%; padding: 0 5rem; max-height: 200px; overflow: scroll;">
+                  <nz-list [nzDataSource]="document.data.comments" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
                     <ng-template #item let-item>
                       <nz-list-item>
-                        <nz-list-item-meta
-                          [nzTitle]="item.user"
-                          nzDescription="{{ item.content }}"
-                        >
+                        <nz-list-item-meta [nzTitle]="item.user" nzDescription="{{ item.content }}">
                           <ng-template #nzTitle> </ng-template>
                         </nz-list-item-meta>
                       </nz-list-item>
@@ -538,39 +310,20 @@
                 </div>
               </nz-form-control>
               <nz-form-control style="margin-top:10px">
-                <textarea
-                  [(ngModel)]="comment"
-                  name="comment"
-                  rows="4"
-                  nz-input
-                ></textarea>
+                <textarea [(ngModel)]="comment" name="comment" rows="4" nz-input></textarea>
               </nz-form-control>
-              <div
-                style="margin-top: 25px; display: flex; justify-content: space-between"
-              >
+              <div style="margin-top: 25px; display: flex; justify-content: space-between">
                 <div class="left">
-                  <button
-                    (click)="sendComment('reviewer')"
-                    nz-button
-                    nzType="default"
-                  >
+                  <button (click)="sendComment('reviewer')" nz-button nzType="default">
                     Comment
                   </button>
                 </div>
                 <div class="right">
-                  <button
-                    style="margin-right:10px"
-                    nz-button
-                    nzType="primary"
-                    (click)="approve('reviewer')"
-                  >
+                  <button *ngIf="document.permission.approve" style="margin-right:10px" nz-button nzType="primary"
+                    (click)="approve('reviewer')">
                     Approve
                   </button>
-                  <button
-                    nz-button
-                    nzType="danger"
-                    (click)="discard('reviewer')"
-                  >
+                  <button *ngIf="document.permission.reject" nz-button nzType="danger" (click)="discard('reviewer')">
                     Reject
                   </button>
                 </div>
