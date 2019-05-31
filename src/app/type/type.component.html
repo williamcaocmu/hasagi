@@ -161,7 +161,8 @@
       >
       <nz-select
       style="width: 200px;"
-      [(ngModel)]="selectedValue"
+      [(ngModel)]="objApplies['1-1']"
+      [nzDisabled]="!roleUser"
     >
       <nz-option nzLabel="Y" nzValue="Y"></nz-option>
       <nz-option nzLabel="N" nzValue="N"></nz-option>

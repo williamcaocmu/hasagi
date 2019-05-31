@@ -15,7 +15,7 @@ export class TypeComponent implements OnInit {
   array = new Array(42);
   roleUser;
   id;
-  selectedValue = 'Y';
+  objApplies = {};
   constructor(
     private pmService: PmService,
     private activatedRoute: ActivatedRoute,
@@ -23,6 +23,7 @@ export class TypeComponent implements OnInit {
     private router: Router
   ) {
     this.obj = this.createObject();
+    this.objApplies = this.createObjApplies();
   }
 
   projectFilter = null;
@@ -35,6 +36,15 @@ export class TypeComponent implements OnInit {
       }
     }
     return obj;
+  }
+  createObjApplies() {
+    const objAllies = {};
+    for (let h = 1; h <= 42; h++) {
+      for (let k = 1; k <= 2; k++) {
+        objAllies[`${h}-${k}`] = 'Y';
+      }
+    }
+    return objAllies;
   }
 
   async ngOnInit() {
@@ -79,7 +89,7 @@ export class TypeComponent implements OnInit {
       content: this.obj,
       project: this.projectFilter,
       id: this.id,
-      apply: this.selectedValue
+      apply: this.objApplies
     };
     this.pmService.postTailor(data).subscribe(
       res => {

@@ -14,8 +14,8 @@ export class TailorFormAddComponent implements OnInit {
   name = '';
   projectFilter = null;
   projects = [];
-  applies = ['Y', 'N', 'M'];
   selectedValue = 'Y';
+  objAllies = {};
 
   constructor(
     private pmService: PmService,
@@ -23,6 +23,7 @@ export class TailorFormAddComponent implements OnInit {
     private router: Router
   ) {
     this.obj = this.createObject();
+    this.objAllies = this.createObjApplies();
   }
 
   getAll() {
@@ -48,12 +49,22 @@ export class TailorFormAddComponent implements OnInit {
     return obj;
   }
 
+  createObjApplies() {
+    const objAllies = {};
+    for (let h = 1; h <= 42; h++) {
+      for (let k = 1; k <= 2; k++) {
+        objAllies[`${h}-${k}`] = 'Y';
+      }
+    }
+    return objAllies;
+  }
+
   submit() {
     let data = {
       name: this.name,
       content: this.obj,
       project: this.projectFilter,
-      apply: this.selectedValue
+      apply: this.objAllies
     };
     this.pmService.editTailor(data).subscribe(
       res => {
