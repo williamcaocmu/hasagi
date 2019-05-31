@@ -157,7 +157,14 @@
         valign="top"
         bgcolor="#92D050"
       >
-        <font face="Arial">Y</font>
+      <nz-select
+      style="width: 200px;"
+      [(ngModel)]="selectedValue"
+    >
+      <nz-option nzLabel="Y" nzValue="Y"></nz-option>
+      <nz-option nzLabel="N" nzValue="N"></nz-option>
+      <nz-option nzLabel="M" nzValue="M"></nz-option>
+    </nz-select>
       </td>
       <td
         style="border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; border-right: 1px solid #bfbfbf"

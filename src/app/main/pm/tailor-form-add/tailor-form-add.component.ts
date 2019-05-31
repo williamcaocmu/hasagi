@@ -14,6 +14,8 @@ export class TailorFormAddComponent implements OnInit {
   name = '';
   projectFilter = null;
   projects = [];
+  applies = ['Y', 'N', 'M'];
+  selectedValue = 'Y';
 
   constructor(
     private pmService: PmService,
@@ -50,10 +52,9 @@ export class TailorFormAddComponent implements OnInit {
     let data = {
       name: this.name,
       content: this.obj,
-      project: this.projectFilter
+      project: this.projectFilter,
+      apply: this.selectedValue
     };
-    console.log(data);
-
     this.pmService.editTailor(data).subscribe(
       res => {
         if (res['code'] === 1) {

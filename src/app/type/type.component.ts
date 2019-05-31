@@ -15,6 +15,7 @@ export class TypeComponent implements OnInit {
   array = new Array(42);
   roleUser;
   id;
+  selectedValue = 'Y';
   constructor(
     private pmService: PmService,
     private activatedRoute: ActivatedRoute,
@@ -77,13 +78,14 @@ export class TypeComponent implements OnInit {
       name: this.name,
       content: this.obj,
       project: this.projectFilter,
-      id: this.id
+      id: this.id,
+      apply: this.selectedValue
     };
     this.pmService.postTailor(data).subscribe(
       res => {
         if (res['code'] === 1) {
           this.obj = res['data'];
-          this.router.navigate(['main/pm/type'] );
+          this.router.navigate(['main/pm/type']);
         } else if (res['code'] === 0) {
           this.noti.show('error', 'Error', 'Action Fail !!');
         }
