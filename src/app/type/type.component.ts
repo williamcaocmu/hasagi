@@ -37,6 +37,7 @@ export class TypeComponent implements OnInit {
     }
     return obj;
   }
+
   createObjApplies() {
     const objAllies = {};
     for (let h = 1; h <= 42; h++) {
@@ -77,6 +78,7 @@ export class TypeComponent implements OnInit {
           this.name = res['data'].name;
           this.projectFilter = res['data'].project;
           this.roleUser = res['role'] === 'true' ? true : false;
+          this.objApplies = res['data'].content.applies;
         }
       },
       err => console.log('err')
@@ -88,8 +90,7 @@ export class TypeComponent implements OnInit {
       name: this.name,
       content: this.obj,
       project: this.projectFilter,
-      id: this.id,
-      apply: this.objApplies
+      id: this.id
     };
     this.pmService.postTailor(data).subscribe(
       res => {

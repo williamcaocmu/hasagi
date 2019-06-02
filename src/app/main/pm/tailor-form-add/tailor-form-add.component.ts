@@ -63,8 +63,7 @@ export class TailorFormAddComponent implements OnInit {
     let data = {
       name: this.name,
       content: this.obj,
-      project: this.projectFilter,
-      apply: this.objAllies
+      project: this.projectFilter
     };
     this.pmService.editTailor(data).subscribe(
       res => {
@@ -81,5 +80,6 @@ export class TailorFormAddComponent implements OnInit {
 
   ngOnInit() {
     this.getAll();
+    this.obj['applies'] = this.objAllies;
   }
 }
